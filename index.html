@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css" />
+    <title>Корзина</title>
+</head>
+<body>
+    <!-- Header start -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-content">
+
+                <div class="header-logos-wrapper">
+                    <img class="header-menu-image" src="./assets//icons/header-menu.svg" alt="menu" />
+                    <img class="header-logo" src="./assets/icons/header-logo-text.svg" alt="logo" />
+                </div>
+
+                <div class="header-input-wrapper">
+                    <input type="text" class="header-search-input" autocomplete="off" placeholder="Я ищу..." />
+                    <img class="search-icon" src="./assets/icons/Search.svg" alt="search" />
+                </div>
+
+                <div class="header-options">
+                    <div class="header-options-wrapper">
+                        <img class="header-options-icon" src="./assets/icons/profile.svg" />
+                        <span class="header-options-text">Профиль</span>
+                    </div>
+                    <div class="header-options-wrapper header-basket">
+                        <div class="purchases-length-wrapper">
+                            <span class="purchases-length-num">3</span>
+                        </div>
+                        <img class="header-options-icon" src="./assets/icons/basket-icon.svg" />
+                        <span class="header-options-text">Корзина</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="header-modile-content">
+                <div class="header-modile-burger-logo">
+                    <img src="./assets/icons/mobile-burger-icon.svg" alt="" />
+                </div>
+                <h2 class="header-modile-title">Товары и точка</h2>
+                <div class="header-modile-search-icon">
+                    <img src="./assets/icons/search-mob-icon.svg" />
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header end -->
+
+    <!-- Main start-->
+    <main class="main">
+        <div class="main-container">
+            <div class="main-content">
+
+                <div class="basket-wrapper">
+                    <h1 class="basket-wrapper-title">Корзина</h1>
+
+                    <!-- Total active items start -->
+                    <div id="total-active-items" class="hidden">
+                        <div class="total-active-basket-items">
+                            <div class="total-active-basket-items-container">
+                                <span id="total-items"></span> <span>&nbsp</span> товаров  
+                                <span>&nbsp</span><span> &#183</span><span>&nbsp</span>
+                                <span id="total-price"></span><span>&nbsp</span> сом
+                            </div>
+                            <img id="open-active-basket-items" class="arrow-img" src="./assets/icons/arrow-down.svg" alt="" />
+                        </div>
+                    </div>
+                    <!-- Total active items end -->
+
+
+                    <!-- Active items start-->
+                    <div class="active-basket">
+                        <div class="purchases-wrapper">
+  
+                            <div class="purchases-wrapper-up-options">
+                                <div class="purchases-wrapper-up-checkbox">
+                                    <div id="all-items-checkbox">
+                                        <div class="purchases-checkbox">
+                                            <img src="./assets/icons/checkbox.svg" alt="" />
+                                        </div>
+                                    </div>
+                                    <div id="all-items-checkbox-fake" class="items-checkbox-fake hidden"></div>
+                                    <span class="basket-wrapper-text">Выбрать все</span>
+                                </div>
+                                <img id="close-active-basket-items" class="arrow-img" src="./assets/icons/arrow-up.svg" alt="up" />
+                            </div>
+    
+                            <div id="active-items-list" class="basket-active-items-container">
+                                <!-- Active card start --> 
+                                <div id="card-1" class="basket-active-card">
+                                    <div class="active-items-left-section"> 
+                                        <div class="basket-active-items-image-wrapper">
+                                            <div class="purchases-checkbox">
+                                                <div id="item1-checkbox-fake" class="items-checkbox-fake hidden"></div>
+                                                <img id="item1-checkbox" src="./assets/icons/checkbox.svg" alt="" />
+                                            </div>
+                                            <div class="basket-active-items-image">
+                                                <img src="./assets/images/item-1.jpg" alt="" />
+                                            </div>
+                                        </div>
+    
+                                        <div class="basket-active-item-params-wrapper">
+                                            <h4 id="card-1-name" class="active-item-name"></h4>
+                                            <div class="active-item-options-box">
+                                                <span class="active-item-option-text">Цвет: <span id="card-1-color"></span></span>
+                                                <span class="active-item-option-text">Размер: <span id="card-1-size"></span></span>
+                                            </div>
+                                            <p id="card-1-place" class="active-item-shop"></p>
+                                            <div class="active-item-company-box">
+                                                <span id="card-1-company" class="active-item-shop"></span>
+                                                <img id="company-info-icon-1" src="./assets/icons/info-icon.svg" class="active-item-info-icon" alt="i" />
+                                            </div>
+                                            <div id="company-info-1" class="hidden">
+                                                <div class="company-info-wrapper">
+                                                    <h5 id="card-1-company-info-name" class="company-info-title"></h5>
+                                                    <p id="card-1-company-info-ogrn" class="company-info-subtitle"></p>
+                                                    <p id="card-1-company-info-address" class="company-info-subtitle"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="active-items-right-section">
+                                        <div class="basket-active-card-counter-container">
+                                            <div class="card-counter">
+                                                <span id="card-1-counter-unactive-minus" class="counter-param_unactive">-</span>
+                                                <span id="card-1-counter-active-minus" class="counter-param-active hidden">-</span>
+                                                <span id="card-1-selected-products" class="counter-num"></span>
+                                                <span id="card-1-counter-unactive-plus" class="counter-param counter-param_unactive hidden">+</span>
+                                                <span id="card-1-counter-active-plus" class="counter-param-active">+</span>
+                                            </div>
+                                            <p class="items-counter-num-info">Осталось <span id="card-1-total-items"></span> шт.</p>
+                                            <div id="icons-1" class="basket-hidden-card-counter-icons">
+                                                <div class="basket-card-heard-icon">
+                                                    <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03399 2.05857C2.26592 2.75224 1.76687 3.83284 1.99496 5.42928C2.22335 7.02783 3.26497 8.68522 4.80439 10.3478C6.25868 11.9184 8.10965 13.4437 9.99999 14.874C11.8903 13.4437 13.7413 11.9184 15.1956 10.3478C16.7351 8.68521 17.7767 7.02783 18.005 5.4293C18.2331 3.83285 17.734 2.75224 16.9659 2.05856C16.1767 1.34572 15.055 1 14 1C12.132 1 11.0924 2.08479 10.5177 2.68443C10.4581 2.7466 10.4035 2.80356 10.3535 2.85355C10.1583 3.04882 9.84169 3.04882 9.64643 2.85355C9.59644 2.80356 9.54185 2.7466 9.48227 2.68443C8.9076 2.08479 7.868 1 5.99999 1C4.94498 1 3.82328 1.34573 3.03399 2.05857ZM2.36374 1.31643C3.37372 0.404274 4.75205 0 5.99999 0C8.07126 0 9.34542 1.11257 9.99999 1.77862C10.6545 1.11257 11.9287 0 14 0C15.2479 0 16.6262 0.404275 17.6362 1.31644C18.6674 2.24776 19.2669 3.66715 18.995 5.5707C18.7233 7.47217 17.515 9.31479 15.9294 11.0272C14.3355 12.7486 12.3064 14.3952 10.3 15.9C10.1222 16.0333 9.87776 16.0333 9.69999 15.9C7.69356 14.3952 5.66446 12.7485 4.07063 11.0272C2.48506 9.31478 1.27668 7.47217 1.00501 5.57072C0.733043 3.66716 1.33253 2.24776 2.36374 1.31643Z" fill="black"/>
+                                                    </svg>
+                                                </div>
+                                                <div class="basket-card-remove-icon">
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 2.72386 0.723858 2.5 1 2.5H15C15.2761 2.5 15.5 2.72386 15.5 3C15.5 3.27614 15.2761 3.5 15 3.5H1C0.723858 3.5 0.5 3.27614 0.5 3Z" fill="black"/>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M1.4584 2.5H14.5059L13.6411 13.6926C13.5405 14.9947 12.4546 16 11.1486 16H4.84639C3.54299 16 2.45829 14.9986 2.35435 13.6994L1.4584 2.5ZM2.5416 3.5L3.35117 13.6196C3.41353 14.3992 4.06435 15 4.84639 15H11.1486C11.9322 15 12.5837 14.3968 12.6441 13.6155L13.4256 3.5H2.5416Z" fill="black"/>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11 3.5H5V1.46875C5 0.657582 5.65758 0 6.46875 0H9.53125C10.3424 0 11 0.657582 11 1.46875V3.5ZM6.46875 1C6.20987 1 6 1.20987 6 1.46875V2.5H10V1.46875C10 1.20987 9.79013 1 9.53125 1H6.46875Z" fill="black"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="active-items-price-wrapper">
+                                            <div class="active-items-price">
+                                                <h3 id="card-1-price" class="active-items-price-sum"></h3>
+                                                <h4 class="active-items-price-currency">com</h4>
+                                            </div>
+                                            <div id="discount-info-1" class="unactive-items-price">
+                                                <h3 class="unactive-items-price-sum"><span id="card-1-old-price"></span>com</h3>
+                                                <div id="discount-container-1" class="hidden">
+                                                    <div class="discount-info-wrapper">
+                                                        <div class="discount-info-left">
+                                                            <h5 class="discount-info-left-text">Скидка 55%</h5>
+                                                            <h5 class="discount-info-left-text">Скидка покупателя 10%</h5>
+                                                        </div>
+                                                        <div class="discount-info-right">
+                                                            <h5 class="discount-info-right-text"><span>&#8211</span>300 сом</h5>
+                                                            <h5 class="discount-info-right-text"><span>&#8211</span>30 сом</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Active card end --> 
+    
+                                <!-- Active card start --> 
+                                <div id="card-2" class="basket-active-card">
+                                    <div class="active-items-left-section">
+    
+                                        <div class="basket-active-items-image-wrapper">
+                                            <div class="purchases-checkbox">
+                                                <div id="item2-checkbox-fake" class="items-checkbox-fake hidden"></div>
+                                                <img id="item2-checkbox" src="./assets/icons/checkbox.svg" alt="" />
+                                            </div>
+                                            <div class="basket-active-items-image">
+                                                <img src="./assets/images/item-2.jpg" alt="" />
+                                            </div>
+                                        </div>
+    
+                                        <div class="basket-active-item-params-wrapper">
+                                            <h4 id="card-2-name" class="active-item-name"></h4>
+                                            <div class="active-item-options-box">
+                                                <span class="active-item-option-text">Цвет: <span id="card-2-color"></span>
+                                            </div>
+                                            <p id="card-2-place" class="active-item-shop"></p>
+                                            <div class="active-item-company-box">
+                                                <span id="card-2-company" class="active-item-shop"></span>
+                                                <img id="company-info-icon-2" src="./assets/icons/info-icon.svg" class="active-item-info-icon" alt="i" />
+                                            </div>
+                                            <div id="company-info-2" class="hidden">
+                                                <div class="company-info-wrapper">
+                                                    <h5 id="card-2-company-info-name" class="company-info-title"></h5>
+                                                    <p id="card-2-company-info-ogrn" class="company-info-subtitle"></p>
+                                                    <p id="card-2-company-info-address" class="company-info-subtitle"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                    </div>
+    
+                                    <div class="active-items-right-section">
+                                        <div class="basket-active-card-counter-container">
+                                            <div class="card-counter">
+                                                <span id="card-2-counter-unactive-minus" class="counter-param counter-param_unactive hidden">-</span>
+                                                <span id="card-2-counter-active-minus" class="counter-param-active">-</span>
+                                                <span id="card-2-selected-products" class="counter-num"></span>
+                                                <span id="card-2-counter-unactive-plus" class="counter-param counter-param_unactive hidden">+</span>
+                                                <span id="card-2-counter-active-plus" class="counter-param-active">+</span>
+                                            </div>
+                                            <div id="icons-2" class="basket-hidden-card-counter-icons">
+                                                <div class="basket-card-heard-icon">
+                                                    <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03399 2.05857C2.26592 2.75224 1.76687 3.83284 1.99496 5.42928C2.22335 7.02783 3.26497 8.68522 4.80439 10.3478C6.25868 11.9184 8.10965 13.4437 9.99999 14.874C11.8903 13.4437 13.7413 11.9184 15.1956 10.3478C16.7351 8.68521 17.7767 7.02783 18.005 5.4293C18.2331 3.83285 17.734 2.75224 16.9659 2.05856C16.1767 1.34572 15.055 1 14 1C12.132 1 11.0924 2.08479 10.5177 2.68443C10.4581 2.7466 10.4035 2.80356 10.3535 2.85355C10.1583 3.04882 9.84169 3.04882 9.64643 2.85355C9.59644 2.80356 9.54185 2.7466 9.48227 2.68443C8.9076 2.08479 7.868 1 5.99999 1C4.94498 1 3.82328 1.34573 3.03399 2.05857ZM2.36374 1.31643C3.37372 0.404274 4.75205 0 5.99999 0C8.07126 0 9.34542 1.11257 9.99999 1.77862C10.6545 1.11257 11.9287 0 14 0C15.2479 0 16.6262 0.404275 17.6362 1.31644C18.6674 2.24776 19.2669 3.66715 18.995 5.5707C18.7233 7.47217 17.515 9.31479 15.9294 11.0272C14.3355 12.7486 12.3064 14.3952 10.3 15.9C10.1222 16.0333 9.87776 16.0333 9.69999 15.9C7.69356 14.3952 5.66446 12.7485 4.07063 11.0272C2.48506 9.31478 1.27668 7.47217 1.00501 5.57072C0.733043 3.66716 1.33253 2.24776 2.36374 1.31643Z" fill="black"/>
+                                                    </svg>
+                                                </div>
+                                                <div class="basket-card-remove-icon">
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 2.72386 0.723858 2.5 1 2.5H15C15.2761 2.5 15.5 2.72386 15.5 3C15.5 3.27614 15.2761 3.5 15 3.5H1C0.723858 3.5 0.5 3.27614 0.5 3Z" fill="black"/>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M1.4584 2.5H14.5059L13.6411 13.6926C13.5405 14.9947 12.4546 16 11.1486 16H4.84639C3.54299 16 2.45829 14.9986 2.35435 13.6994L1.4584 2.5ZM2.5416 3.5L3.35117 13.6196C3.41353 14.3992 4.06435 15 4.84639 15H11.1486C11.9322 15 12.5837 14.3968 12.6441 13.6155L13.4256 3.5H2.5416Z" fill="black"/>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11 3.5H5V1.46875C5 0.657582 5.65758 0 6.46875 0H9.53125C10.3424 0 11 0.657582 11 1.46875V3.5ZM6.46875 1C6.20987 1 6 1.20987 6 1.46875V2.5H10V1.46875C10 1.20987 9.79013 1 9.53125 1H6.46875Z" fill="black"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="active-items-price-wrapper">
+                                            <div class="active-items-price">
+                                                <h3 id="card-2-price" class="active-items-price-sum active-items-price-big_sum"></h3>
+                                                <h4 class="active-items-price-currency">com</h4>
+                                            </div>
+                                            <div id="discount-info-2" class="unactive-items-price">
+                                                <h3 class="unactive-items-price-sum"><span id="card-2-old-price"></span> com</h3>
+                                                <div id="discount-container-2" class="hidden">
+                                                    <div class="discount-info-wrapper">
+                                                        <div class="discount-info-left">
+                                                            <h5 class="discount-info-left-text">Скидка 55%</h5>
+                                                            <h5 class="discount-info-left-text">Скидка покупателя 10%</h5>
+                                                        </div>
+                                                        <div class="discount-info-right">
+                                                            <h5 class="discount-info-right-text"><span>&#8211</span>300 сом</h5>
+                                                            <h5 class="discount-info-right-text"><span>&#8211</span>30 сом</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Active card end --> 
+    
+                                <!-- Active card start --> 
+                                <div id="card-3" class="basket-active-card">
+
+                                    <div class="active-items-left-section">
+                                        <div class="basket-active-items-image-wrapper">
+                                            <div class="purchases-checkbox">
+                                                <div id="item3-checkbox-fake" class="items-checkbox-fake hidden"></div>
+                                                <img id="item3-checkbox" src="./assets/icons/checkbox.svg" alt="" />
+                                            </div>
+                                            <div class="basket-active-items-image">
+                                                <img src="./assets/images/item-3.jpg" alt="" />
+                                            </div>
+                                        </div>
+    
+                                        <div class="basket-active-item-params-wrapper">
+                                            <h4 id="card-3-name" class="active-item-name"></h4>
+                                            <p id="card-3-place" class="active-item-shop"></p>
+                                            <div class="active-item-company-box">
+                                                <span id="card-3-company" class="active-item-shop"></span>
+                                                <img id="company-info-icon-3" src="./assets/icons/info-icon.svg" class="active-item-info-icon" alt="i" />
+                                            </div>
+                                            <div id="company-info-3" class="hidden">
+                                                <div class="company-info-wrapper">
+                                                    <h5 id="card-3-company-info-name" class="company-info-title"></h5>
+                                                    <p id="card-3-company-info-ogrn" class="company-info-subtitle"></p>
+                                                    <p id="card-3-company-info-address" class="company-info-subtitle"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="active-items-right-section">
+                                        <div class="basket-active-card-counter-container">
+                                            <div class="card-counter">
+                                                <span id="card-3-counter-unactive-minus" class="counter-param counter-param_unactive">-</span>
+                                                <span id="card-3-counter-active-minus" class="counter-param-active hidden">-</span>
+                                                <span id="card-3-selected-products" class="counter-num"></span>
+                                                <span class="counter-param-active">+</span>
+                                            </div>
+                                            <p class="items-counter-num-info">Осталось <span id="card-3-total-items"></span> шт.</p>
+                                            <div id="icons-3" class="basket-hidden-card-counter-icons">
+                                                <div class="basket-card-heard-icon">
+                                                    <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03399 2.05857C2.26592 2.75224 1.76687 3.83284 1.99496 5.42928C2.22335 7.02783 3.26497 8.68522 4.80439 10.3478C6.25868 11.9184 8.10965 13.4437 9.99999 14.874C11.8903 13.4437 13.7413 11.9184 15.1956 10.3478C16.7351 8.68521 17.7767 7.02783 18.005 5.4293C18.2331 3.83285 17.734 2.75224 16.9659 2.05856C16.1767 1.34572 15.055 1 14 1C12.132 1 11.0924 2.08479 10.5177 2.68443C10.4581 2.7466 10.4035 2.80356 10.3535 2.85355C10.1583 3.04882 9.84169 3.04882 9.64643 2.85355C9.59644 2.80356 9.54185 2.7466 9.48227 2.68443C8.9076 2.08479 7.868 1 5.99999 1C4.94498 1 3.82328 1.34573 3.03399 2.05857ZM2.36374 1.31643C3.37372 0.404274 4.75205 0 5.99999 0C8.07126 0 9.34542 1.11257 9.99999 1.77862C10.6545 1.11257 11.9287 0 14 0C15.2479 0 16.6262 0.404275 17.6362 1.31644C18.6674 2.24776 19.2669 3.66715 18.995 5.5707C18.7233 7.47217 17.515 9.31479 15.9294 11.0272C14.3355 12.7486 12.3064 14.3952 10.3 15.9C10.1222 16.0333 9.87776 16.0333 9.69999 15.9C7.69356 14.3952 5.66446 12.7485 4.07063 11.0272C2.48506 9.31478 1.27668 7.47217 1.00501 5.57072C0.733043 3.66716 1.33253 2.24776 2.36374 1.31643Z" fill="black"/>
+                                                    </svg>
+                                                </div>
+                                                <div class="basket-card-remove-icon">
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 2.72386 0.723858 2.5 1 2.5H15C15.2761 2.5 15.5 2.72386 15.5 3C15.5 3.27614 15.2761 3.5 15 3.5H1C0.723858 3.5 0.5 3.27614 0.5 3Z" fill="black"/>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M1.4584 2.5H14.5059L13.6411 13.6926C13.5405 14.9947 12.4546 16 11.1486 16H4.84639C3.54299 16 2.45829 14.9986 2.35435 13.6994L1.4584 2.5ZM2.5416 3.5L3.35117 13.6196C3.41353 14.3992 4.06435 15 4.84639 15H11.1486C11.9322 15 12.5837 14.3968 12.6441 13.6155L13.4256 3.5H2.5416Z" fill="black"/>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11 3.5H5V1.46875C5 0.657582 5.65758 0 6.46875 0H9.53125C10.3424 0 11 0.657582 11 1.46875V3.5ZM6.46875 1C6.20987 1 6 1.20987 6 1.46875V2.5H10V1.46875C10 1.20987 9.79013 1 9.53125 1H6.46875Z" fill="black"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="active-items-price-wrapper">
+                                            <div class="active-items-price">
+                                                <h3 id="card-3-price" class="active-items-price-sum"></h3>
+                                                <h4 class="active-items-price-currency">com</h4>
+                                            </div>
+                                            <div id="discount-info-3" class="unactive-items-price">
+                                                <h3 class="unactive-items-price-sum"><span id="card-3-old-price"></span> com</h3>
+                                                <div id="discount-container-3" class="hidden">
+                                                    <div class="discount-info-wrapper">
+                                                        <div class="discount-info-left">
+                                                            <h5 class="discount-info-left-text">Скидка 55%</h5>
+                                                            <h5 class="discount-info-left-text">Скидка покупателя 10%</h5>
+                                                        </div>
+                                                        <div class="discount-info-right">
+                                                            <h5 class="discount-info-right-text"><span>&#8211</span>300 сом</h5>
+                                                            <h5 class="discount-info-right-text"><span>&#8211</span>30 сом</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- Active card end --> 
+                            </div>
+
+                            <!-- Mobile cards start -->
+                            <div class="basket-active-items-mobile-container">
+
+                                <!-- mobile card 1 start -->
+                                <div class="basket-active-mobile-card">
+                                    <div class="active-mobile-card-up">
+                                        <div class="active-mobile-image-wrapper">
+                                            <div class="active-mobile-checkbox-container">
+                                                <div id="item1-checkbox-fake" class="items-checkbox-fake hidden"></div>
+                                                <img id="item1-checkbox" src="./assets/icons/checkbox.svg" alt="" />
+                                            </div>
+                                            <img src="./assets/images/item-1.jpg" class="item-image" alt="" />
+                                            <div class="active-mobile-item-size-container">
+                                                <span id="card-1-size"></span>
+                                            </div>
+                                        </div>
+                                        <div class="active-mobile-item-params-container">
+                                            <div class="active-mobile-item-price-wrapper">
+                                                <div class="active-mobile-item-price">
+                                                    <span id="card-1-price"></span> com
+                                                </div>
+                                                <div class="active-mobile-item-old-price">
+                                                    <span id="card-1-old-price"></span> com
+                                                </div>
+                                            </div>
+                                            <div class="active-mobile-item-params-name">
+                                                <span id="card-1-name"></span>
+                                            </div>
+                                            <div class="active-mobile-item-params-color">
+                                                Цвет: <span id="card-1-color"></span>
+                                            </div>
+                                            <span id="card-1-place" class="active-mobile-item-params-place"></span>
+                                        </div>
+                                    </div>
+                                    <div class="active-mobile-card-down">
+                                        <div class="mobile-card-counter">
+                                            <span id="card-1-counter-unactive-minus" class="counter-param counter-param_unactive">-</span>
+                                            <span id="card-1-counter-active-minus" class="counter-param-active hidden">-</span>
+                                            <span id="card-1-selected-products" class="mobile-counter-num"></span>
+                                            <span class="counter-param counter-param_unactive hidden">+</span>
+                                            <span class="counter-param-active">+</span>
+                                        </div>
+                                        <p class="items-counter-num-info">Осталось <span id="card-1-total-items"></span> шт.</p>
+                                        <div class="mobile-card-icons">
+                                            <div class="basket-card-heard-icon">
+                                                <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03399 2.05857C2.26592 2.75224 1.76687 3.83284 1.99496 5.42928C2.22335 7.02783 3.26497 8.68522 4.80439 10.3478C6.25868 11.9184 8.10965 13.4437 9.99999 14.874C11.8903 13.4437 13.7413 11.9184 15.1956 10.3478C16.7351 8.68521 17.7767 7.02783 18.005 5.4293C18.2331 3.83285 17.734 2.75224 16.9659 2.05856C16.1767 1.34572 15.055 1 14 1C12.132 1 11.0924 2.08479 10.5177 2.68443C10.4581 2.7466 10.4035 2.80356 10.3535 2.85355C10.1583 3.04882 9.84169 3.04882 9.64643 2.85355C9.59644 2.80356 9.54185 2.7466 9.48227 2.68443C8.9076 2.08479 7.868 1 5.99999 1C4.94498 1 3.82328 1.34573 3.03399 2.05857ZM2.36374 1.31643C3.37372 0.404274 4.75205 0 5.99999 0C8.07126 0 9.34542 1.11257 9.99999 1.77862C10.6545 1.11257 11.9287 0 14 0C15.2479 0 16.6262 0.404275 17.6362 1.31644C18.6674 2.24776 19.2669 3.66715 18.995 5.5707C18.7233 7.47217 17.515 9.31479 15.9294 11.0272C14.3355 12.7486 12.3064 14.3952 10.3 15.9C10.1222 16.0333 9.87776 16.0333 9.69999 15.9C7.69356 14.3952 5.66446 12.7485 4.07063 11.0272C2.48506 9.31478 1.27668 7.47217 1.00501 5.57072C0.733043 3.66716 1.33253 2.24776 2.36374 1.31643Z" fill="black"/>
+                                                </svg>
+                                            </div>
+                                            <div class="basket-card-remove-icon">
+                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 2.72386 0.723858 2.5 1 2.5H15C15.2761 2.5 15.5 2.72386 15.5 3C15.5 3.27614 15.2761 3.5 15 3.5H1C0.723858 3.5 0.5 3.27614 0.5 3Z" fill="black"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.4584 2.5H14.5059L13.6411 13.6926C13.5405 14.9947 12.4546 16 11.1486 16H4.84639C3.54299 16 2.45829 14.9986 2.35435 13.6994L1.4584 2.5ZM2.5416 3.5L3.35117 13.6196C3.41353 14.3992 4.06435 15 4.84639 15H11.1486C11.9322 15 12.5837 14.3968 12.6441 13.6155L13.4256 3.5H2.5416Z" fill="black"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 3.5H5V1.46875C5 0.657582 5.65758 0 6.46875 0H9.53125C10.3424 0 11 0.657582 11 1.46875V3.5ZM6.46875 1C6.20987 1 6 1.20987 6 1.46875V2.5H10V1.46875C10 1.20987 9.79013 1 9.53125 1H6.46875Z" fill="black"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- mobile card 1 end -->
+
+                                <!-- mobile card 2 start -->
+                                <div class="basket-active-mobile-card">
+                                    <div class="active-mobile-card-up">
+                                        <div class="active-mobile-image-wrapper">
+                                            <div class="active-mobile-checkbox-container">
+                                                <div id="item2-checkbox-fake" class="items-checkbox-fake hidden"></div>
+                                                <img id="item2-checkbox" src="./assets/icons/checkbox.svg" alt="" />
+                                            </div>
+                                            <img src="./assets/images/item-2.jpg" class="item-image" alt="" />
+                                        </div>
+                                        <div class="active-mobile-item-params-container">
+                                            <div class="active-mobile-item-price-wrapper">
+                                                <div class="active-mobile-item-price">
+                                                    <span id="card-2-price"></span> com
+                                                </div>
+                                                <div class="active-mobile-item-old-price">
+                                                    <span id="card-2-old-price"></span> com
+                                                </div>
+                                            </div>
+                                            <div class="active-mobile-item-params-name">
+                                                <span id="card-2-name"></span>
+                                            </div>
+                                            <div class="active-mobile-item-params-color">
+                                                Цвет: <span id="card-2-color"></span>
+                                            </div>
+                                            <span id="card-2-place" class="active-mobile-item-params-place"></span>
+                                        </div>
+                                    </div>
+                                    <div class="active-mobile-card-down">
+                                        <div class="mobile-card-counter">
+                                            <span id="card-2-counter-unactive-minus" class="counter-param counter-param_unactive">-</span>
+                                            <span id="card-2-counter-active-minus" class="counter-param-active hidden">-</span>
+                                            <span id="card-2-selected-products" class="mobile-counter-num"></span>
+                                            <span class="counter-param counter-param_unactive hidden">+</span>
+                                            <span class="counter-param-active">+</span>
+                                        </div>
+                                        <div class="mobile-card-icons">
+                                            <div class="basket-card-heard-icon">
+                                                <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03399 2.05857C2.26592 2.75224 1.76687 3.83284 1.99496 5.42928C2.22335 7.02783 3.26497 8.68522 4.80439 10.3478C6.25868 11.9184 8.10965 13.4437 9.99999 14.874C11.8903 13.4437 13.7413 11.9184 15.1956 10.3478C16.7351 8.68521 17.7767 7.02783 18.005 5.4293C18.2331 3.83285 17.734 2.75224 16.9659 2.05856C16.1767 1.34572 15.055 1 14 1C12.132 1 11.0924 2.08479 10.5177 2.68443C10.4581 2.7466 10.4035 2.80356 10.3535 2.85355C10.1583 3.04882 9.84169 3.04882 9.64643 2.85355C9.59644 2.80356 9.54185 2.7466 9.48227 2.68443C8.9076 2.08479 7.868 1 5.99999 1C4.94498 1 3.82328 1.34573 3.03399 2.05857ZM2.36374 1.31643C3.37372 0.404274 4.75205 0 5.99999 0C8.07126 0 9.34542 1.11257 9.99999 1.77862C10.6545 1.11257 11.9287 0 14 0C15.2479 0 16.6262 0.404275 17.6362 1.31644C18.6674 2.24776 19.2669 3.66715 18.995 5.5707C18.7233 7.47217 17.515 9.31479 15.9294 11.0272C14.3355 12.7486 12.3064 14.3952 10.3 15.9C10.1222 16.0333 9.87776 16.0333 9.69999 15.9C7.69356 14.3952 5.66446 12.7485 4.07063 11.0272C2.48506 9.31478 1.27668 7.47217 1.00501 5.57072C0.733043 3.66716 1.33253 2.24776 2.36374 1.31643Z" fill="black"/>
+                                                </svg>
+                                            </div>
+                                            <div class="basket-card-remove-icon">
+                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 2.72386 0.723858 2.5 1 2.5H15C15.2761 2.5 15.5 2.72386 15.5 3C15.5 3.27614 15.2761 3.5 15 3.5H1C0.723858 3.5 0.5 3.27614 0.5 3Z" fill="black"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.4584 2.5H14.5059L13.6411 13.6926C13.5405 14.9947 12.4546 16 11.1486 16H4.84639C3.54299 16 2.45829 14.9986 2.35435 13.6994L1.4584 2.5ZM2.5416 3.5L3.35117 13.6196C3.41353 14.3992 4.06435 15 4.84639 15H11.1486C11.9322 15 12.5837 14.3968 12.6441 13.6155L13.4256 3.5H2.5416Z" fill="black"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 3.5H5V1.46875C5 0.657582 5.65758 0 6.46875 0H9.53125C10.3424 0 11 0.657582 11 1.46875V3.5ZM6.46875 1C6.20987 1 6 1.20987 6 1.46875V2.5H10V1.46875C10 1.20987 9.79013 1 9.53125 1H6.46875Z" fill="black"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- mobile card 2 end -->
+
+                                <!-- mobile card 3 start -->
+                                <div class="basket-active-mobile-card">
+                                    <div class="active-mobile-card-up">
+                                        <div class="active-mobile-image-wrapper">
+                                            <div class="active-mobile-checkbox-container">
+                                                <div id="item3-checkbox-fake" class="items-checkbox-fake hidden"></div>
+                                                <img id="item3-checkbox" src="./assets/icons/checkbox.svg" alt="" />
+                                            </div>
+                                            <img src="./assets/images/item-3.jpg" class="item-image" alt="" />
+                                        </div>
+                                        <div class="active-mobile-item-params-container">
+                                            <div class="active-mobile-item-price-wrapper">
+                                                <div class="active-mobile-item-price">
+                                                    <span id="card-3-price"></span> com
+                                                </div>
+                                                <div class="active-mobile-item-old-price">
+                                                    <span id="card-3-old-price"></span> com
+                                                </div>
+                                            </div>
+                                            <div class="active-mobile-item-params-name">
+                                                <span id="card-3-name"></span>
+                                            </div>
+                                            <span id="card-3-place" class="active-mobile-item-params-place"></span>
+                                        </div>
+                                    </div>
+                                    <div class="active-mobile-card-down">
+                                        <div class="mobile-card-counter">
+                                            <span id="card-3-counter-unactive-minus" class="counter-param counter-param_unactive">-</span>
+                                            <span id="card-3-counter-active-minus" class="counter-param-active hidden">-</span>
+                                            <span id="card-3-selected-products" class="mobile-counter-num"></span>
+                                            <span class="counter-param counter-param_unactive hidden">+</span>
+                                            <span class="counter-param-active">+</span>
+                                        </div>
+                                        <p class="items-counter-num-info">Осталось <span id="card-3-total-items"></span> шт.</p>
+                                        <div class="mobile-card-icons">
+                                            <div class="basket-card-heard-icon">
+                                                <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03399 2.05857C2.26592 2.75224 1.76687 3.83284 1.99496 5.42928C2.22335 7.02783 3.26497 8.68522 4.80439 10.3478C6.25868 11.9184 8.10965 13.4437 9.99999 14.874C11.8903 13.4437 13.7413 11.9184 15.1956 10.3478C16.7351 8.68521 17.7767 7.02783 18.005 5.4293C18.2331 3.83285 17.734 2.75224 16.9659 2.05856C16.1767 1.34572 15.055 1 14 1C12.132 1 11.0924 2.08479 10.5177 2.68443C10.4581 2.7466 10.4035 2.80356 10.3535 2.85355C10.1583 3.04882 9.84169 3.04882 9.64643 2.85355C9.59644 2.80356 9.54185 2.7466 9.48227 2.68443C8.9076 2.08479 7.868 1 5.99999 1C4.94498 1 3.82328 1.34573 3.03399 2.05857ZM2.36374 1.31643C3.37372 0.404274 4.75205 0 5.99999 0C8.07126 0 9.34542 1.11257 9.99999 1.77862C10.6545 1.11257 11.9287 0 14 0C15.2479 0 16.6262 0.404275 17.6362 1.31644C18.6674 2.24776 19.2669 3.66715 18.995 5.5707C18.7233 7.47217 17.515 9.31479 15.9294 11.0272C14.3355 12.7486 12.3064 14.3952 10.3 15.9C10.1222 16.0333 9.87776 16.0333 9.69999 15.9C7.69356 14.3952 5.66446 12.7485 4.07063 11.0272C2.48506 9.31478 1.27668 7.47217 1.00501 5.57072C0.733043 3.66716 1.33253 2.24776 2.36374 1.31643Z" fill="black"/>
+                                                </svg>
+                                            </div>
+                                            <div class="basket-card-remove-icon">
+                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 2.72386 0.723858 2.5 1 2.5H15C15.2761 2.5 15.5 2.72386 15.5 3C15.5 3.27614 15.2761 3.5 15 3.5H1C0.723858 3.5 0.5 3.27614 0.5 3Z" fill="black"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.4584 2.5H14.5059L13.6411 13.6926C13.5405 14.9947 12.4546 16 11.1486 16H4.84639C3.54299 16 2.45829 14.9986 2.35435 13.6994L1.4584 2.5ZM2.5416 3.5L3.35117 13.6196C3.41353 14.3992 4.06435 15 4.84639 15H11.1486C11.9322 15 12.5837 14.3968 12.6441 13.6155L13.4256 3.5H2.5416Z" fill="black"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 3.5H5V1.46875C5 0.657582 5.65758 0 6.46875 0H9.53125C10.3424 0 11 0.657582 11 1.46875V3.5ZM6.46875 1C6.20987 1 6 1.20987 6 1.46875V2.5H10V1.46875C10 1.20987 9.79013 1 9.53125 1H6.46875Z" fill="black"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- mobile card 3 end -->
+
+                            </div>
+                            <!-- Mobile cards end -->
+
+                        </div>
+                    </div>
+                    <!-- Active items end-->
+
+
+                    <!-- UnActive items start -->
+                    <div class="unactive-items">
+                        <div id="unactive-container" class="unactive-total-items-container-active">
+                            <div class="total-unactive-items">Отсутствуют · <span id="unactive-items-length">3</span> товара</div>
+                            <div class="unactive-items-arrows-wrapper">
+                                <div id="unactive-arrow-up"><img src="./assets/icons/arrow-up.svg" alt="" class="arrow-img" /></div>
+                                <div id="unactive-arrow-down" class="hidden"><img src="./assets/icons/arrow-down.svg" alt="" class="arrow-img" /></div>
+                            </div>
+                        </div>
+
+                        <div id="unactive-basket-wrapper">
+                            <div class="unactive-cards">
+
+                                <div id="card-4" class="unactive-card-container">
+                                    <div class="unactive-card-left">
+                                        <div class="unactive-card-image">
+                                            <img class="unactive-image" src="./assets/images/item-1.jpg" alt="" />
+                                        </div>
+                                        <div class="unactive-card-item-info">
+                                            <h3 id="card-1-name" class="unactive-card-item-name"></h3>
+                                            <div class="unactive-card-text-params-wrapper">
+                                                <span class="unactive-card-item-color">Цвет: <span id="card-1-color"></span></span>
+                                                <span class="unactive-card-item-color">Размер: <span id="card-1-size"></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="icons-4" class="unactive-hidden-card-icons-container">
+                                        <div class="basket-card-heard-icon">
+                                            <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03399 2.05857C2.26592 2.75224 1.76687 3.83284 1.99496 5.42928C2.22335 7.02783 3.26497 8.68522 4.80439 10.3478C6.25868 11.9184 8.10965 13.4437 9.99999 14.874C11.8903 13.4437 13.7413 11.9184 15.1956 10.3478C16.7351 8.68521 17.7767 7.02783 18.005 5.4293C18.2331 3.83285 17.734 2.75224 16.9659 2.05856C16.1767 1.34572 15.055 1 14 1C12.132 1 11.0924 2.08479 10.5177 2.68443C10.4581 2.7466 10.4035 2.80356 10.3535 2.85355C10.1583 3.04882 9.84169 3.04882 9.64643 2.85355C9.59644 2.80356 9.54185 2.7466 9.48227 2.68443C8.9076 2.08479 7.868 1 5.99999 1C4.94498 1 3.82328 1.34573 3.03399 2.05857ZM2.36374 1.31643C3.37372 0.404274 4.75205 0 5.99999 0C8.07126 0 9.34542 1.11257 9.99999 1.77862C10.6545 1.11257 11.9287 0 14 0C15.2479 0 16.6262 0.404275 17.6362 1.31644C18.6674 2.24776 19.2669 3.66715 18.995 5.5707C18.7233 7.47217 17.515 9.31479 15.9294 11.0272C14.3355 12.7486 12.3064 14.3952 10.3 15.9C10.1222 16.0333 9.87776 16.0333 9.69999 15.9C7.69356 14.3952 5.66446 12.7485 4.07063 11.0272C2.48506 9.31478 1.27668 7.47217 1.00501 5.57072C0.733043 3.66716 1.33253 2.24776 2.36374 1.31643Z" fill="black"/>
+                                            </svg>
+                                        </div>
+                                        <div class="basket-card-remove-icon">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 2.72386 0.723858 2.5 1 2.5H15C15.2761 2.5 15.5 2.72386 15.5 3C15.5 3.27614 15.2761 3.5 15 3.5H1C0.723858 3.5 0.5 3.27614 0.5 3Z" fill="black"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.4584 2.5H14.5059L13.6411 13.6926C13.5405 14.9947 12.4546 16 11.1486 16H4.84639C3.54299 16 2.45829 14.9986 2.35435 13.6994L1.4584 2.5ZM2.5416 3.5L3.35117 13.6196C3.41353 14.3992 4.06435 15 4.84639 15H11.1486C11.9322 15 12.5837 14.3968 12.6441 13.6155L13.4256 3.5H2.5416Z" fill="black"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M11 3.5H5V1.46875C5 0.657582 5.65758 0 6.46875 0H9.53125C10.3424 0 11 0.657582 11 1.46875V3.5ZM6.46875 1C6.20987 1 6 1.20987 6 1.46875V2.5H10V1.46875C10 1.20987 9.79013 1 9.53125 1H6.46875Z" fill="black"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div id="card-5" class="unactive-card-container">
+                                    <div class="unactive-card-left">
+                                        <div class="unactive-card-image">
+                                            <img class="unactive-image" src="./assets/images/item-2.jpg" alt="" />
+                                        </div>
+                                        <div class="unactive-card-item-info">
+                                            <h3 id="card-2-name" class="unactive-card-item-name"></h3>
+                                            <div class="unactive-card-text-params-wrapper">
+                                                <span class="unactive-card-item-color">Цвет: <span id="card-2-color"></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="icons-5" class="unactive-hidden-card-icons-container">
+                                        <div class="basket-card-heard-icon">
+                                            <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03399 2.05857C2.26592 2.75224 1.76687 3.83284 1.99496 5.42928C2.22335 7.02783 3.26497 8.68522 4.80439 10.3478C6.25868 11.9184 8.10965 13.4437 9.99999 14.874C11.8903 13.4437 13.7413 11.9184 15.1956 10.3478C16.7351 8.68521 17.7767 7.02783 18.005 5.4293C18.2331 3.83285 17.734 2.75224 16.9659 2.05856C16.1767 1.34572 15.055 1 14 1C12.132 1 11.0924 2.08479 10.5177 2.68443C10.4581 2.7466 10.4035 2.80356 10.3535 2.85355C10.1583 3.04882 9.84169 3.04882 9.64643 2.85355C9.59644 2.80356 9.54185 2.7466 9.48227 2.68443C8.9076 2.08479 7.868 1 5.99999 1C4.94498 1 3.82328 1.34573 3.03399 2.05857ZM2.36374 1.31643C3.37372 0.404274 4.75205 0 5.99999 0C8.07126 0 9.34542 1.11257 9.99999 1.77862C10.6545 1.11257 11.9287 0 14 0C15.2479 0 16.6262 0.404275 17.6362 1.31644C18.6674 2.24776 19.2669 3.66715 18.995 5.5707C18.7233 7.47217 17.515 9.31479 15.9294 11.0272C14.3355 12.7486 12.3064 14.3952 10.3 15.9C10.1222 16.0333 9.87776 16.0333 9.69999 15.9C7.69356 14.3952 5.66446 12.7485 4.07063 11.0272C2.48506 9.31478 1.27668 7.47217 1.00501 5.57072C0.733043 3.66716 1.33253 2.24776 2.36374 1.31643Z" fill="black"/>
+                                            </svg>
+                                        </div>
+                                        <div class="basket-card-remove-icon">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 2.72386 0.723858 2.5 1 2.5H15C15.2761 2.5 15.5 2.72386 15.5 3C15.5 3.27614 15.2761 3.5 15 3.5H1C0.723858 3.5 0.5 3.27614 0.5 3Z" fill="black"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.4584 2.5H14.5059L13.6411 13.6926C13.5405 14.9947 12.4546 16 11.1486 16H4.84639C3.54299 16 2.45829 14.9986 2.35435 13.6994L1.4584 2.5ZM2.5416 3.5L3.35117 13.6196C3.41353 14.3992 4.06435 15 4.84639 15H11.1486C11.9322 15 12.5837 14.3968 12.6441 13.6155L13.4256 3.5H2.5416Z" fill="black"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M11 3.5H5V1.46875C5 0.657582 5.65758 0 6.46875 0H9.53125C10.3424 0 11 0.657582 11 1.46875V3.5ZM6.46875 1C6.20987 1 6 1.20987 6 1.46875V2.5H10V1.46875C10 1.20987 9.79013 1 9.53125 1H6.46875Z" fill="black"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div id="card-6" class="unactive-card-container">
+                                    <div class="unactive-card-left">
+                                        <div class="unactive-card-image">
+                                            <img class="unactive-image" src="./assets/images/item-3.jpg" alt="" />
+                                        </div>
+                                        <div class="unactive-card-item-info">
+                                            <h3 id="card-3-name" class="unactive-card-item-name"></h3>
+                                        </div>
+                                    </div>
+                                    <div id="icons-6" class="unactive-hidden-card-icons-container">
+                                        <div class="basket-card-heard-icon">
+                                            <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03399 2.05857C2.26592 2.75224 1.76687 3.83284 1.99496 5.42928C2.22335 7.02783 3.26497 8.68522 4.80439 10.3478C6.25868 11.9184 8.10965 13.4437 9.99999 14.874C11.8903 13.4437 13.7413 11.9184 15.1956 10.3478C16.7351 8.68521 17.7767 7.02783 18.005 5.4293C18.2331 3.83285 17.734 2.75224 16.9659 2.05856C16.1767 1.34572 15.055 1 14 1C12.132 1 11.0924 2.08479 10.5177 2.68443C10.4581 2.7466 10.4035 2.80356 10.3535 2.85355C10.1583 3.04882 9.84169 3.04882 9.64643 2.85355C9.59644 2.80356 9.54185 2.7466 9.48227 2.68443C8.9076 2.08479 7.868 1 5.99999 1C4.94498 1 3.82328 1.34573 3.03399 2.05857ZM2.36374 1.31643C3.37372 0.404274 4.75205 0 5.99999 0C8.07126 0 9.34542 1.11257 9.99999 1.77862C10.6545 1.11257 11.9287 0 14 0C15.2479 0 16.6262 0.404275 17.6362 1.31644C18.6674 2.24776 19.2669 3.66715 18.995 5.5707C18.7233 7.47217 17.515 9.31479 15.9294 11.0272C14.3355 12.7486 12.3064 14.3952 10.3 15.9C10.1222 16.0333 9.87776 16.0333 9.69999 15.9C7.69356 14.3952 5.66446 12.7485 4.07063 11.0272C2.48506 9.31478 1.27668 7.47217 1.00501 5.57072C0.733043 3.66716 1.33253 2.24776 2.36374 1.31643Z" fill="black"/>
+                                            </svg>
+                                        </div>
+                                        <div class="basket-card-remove-icon">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 2.72386 0.723858 2.5 1 2.5H15C15.2761 2.5 15.5 2.72386 15.5 3C15.5 3.27614 15.2761 3.5 15 3.5H1C0.723858 3.5 0.5 3.27614 0.5 3Z" fill="black"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.4584 2.5H14.5059L13.6411 13.6926C13.5405 14.9947 12.4546 16 11.1486 16H4.84639C3.54299 16 2.45829 14.9986 2.35435 13.6994L1.4584 2.5ZM2.5416 3.5L3.35117 13.6196C3.41353 14.3992 4.06435 15 4.84639 15H11.1486C11.9322 15 12.5837 14.3968 12.6441 13.6155L13.4256 3.5H2.5416Z" fill="black"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M11 3.5H5V1.46875C5 0.657582 5.65758 0 6.46875 0H9.53125C10.3424 0 11 0.657582 11 1.46875V3.5ZM6.46875 1C6.20987 1 6 1.20987 6 1.46875V2.5H10V1.46875C10 1.20987 9.79013 1 9.53125 1H6.46875Z" fill="black"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                            </div>
+
+                            <!-- mobile unactive cards start -->
+                            <div class="mobile-unactive-cards">
+
+                                <!-- mobile unactive card-1 start -->
+                                <div class="mobile-unactive-card">
+                                    <div class="mobile-unactive-card-up">
+                                        <div class="mobile-unactive-image-container">
+                                            <img class="unactive-image" src="./assets/images/item-1.jpg" alt="" />
+                                            <div class="mobile-unactive-size-container">
+                                                <span id="card-1-size"></span>
+                                            </div>
+                                        </div>
+                                        <div class="mobile-unactive-params">
+                                            <div class="mobile-unactive-item-params-name">
+                                                <span id="card-1-name"></span>
+                                            </div>
+                                            <div class="mobile-unactive-item-params-color">
+                                                Цвет: <span id="card-1-color"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mobile-unactive-card-down">
+                                        <div class="mobile-unactive-icons">
+                                            <div class="basket-card-heard-icon">
+                                                <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03399 2.05857C2.26592 2.75224 1.76687 3.83284 1.99496 5.42928C2.22335 7.02783 3.26497 8.68522 4.80439 10.3478C6.25868 11.9184 8.10965 13.4437 9.99999 14.874C11.8903 13.4437 13.7413 11.9184 15.1956 10.3478C16.7351 8.68521 17.7767 7.02783 18.005 5.4293C18.2331 3.83285 17.734 2.75224 16.9659 2.05856C16.1767 1.34572 15.055 1 14 1C12.132 1 11.0924 2.08479 10.5177 2.68443C10.4581 2.7466 10.4035 2.80356 10.3535 2.85355C10.1583 3.04882 9.84169 3.04882 9.64643 2.85355C9.59644 2.80356 9.54185 2.7466 9.48227 2.68443C8.9076 2.08479 7.868 1 5.99999 1C4.94498 1 3.82328 1.34573 3.03399 2.05857ZM2.36374 1.31643C3.37372 0.404274 4.75205 0 5.99999 0C8.07126 0 9.34542 1.11257 9.99999 1.77862C10.6545 1.11257 11.9287 0 14 0C15.2479 0 16.6262 0.404275 17.6362 1.31644C18.6674 2.24776 19.2669 3.66715 18.995 5.5707C18.7233 7.47217 17.515 9.31479 15.9294 11.0272C14.3355 12.7486 12.3064 14.3952 10.3 15.9C10.1222 16.0333 9.87776 16.0333 9.69999 15.9C7.69356 14.3952 5.66446 12.7485 4.07063 11.0272C2.48506 9.31478 1.27668 7.47217 1.00501 5.57072C0.733043 3.66716 1.33253 2.24776 2.36374 1.31643Z" fill="black"/>
+                                                </svg>
+                                            </div>
+                                            <div class="basket-card-remove-icon">
+                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 2.72386 0.723858 2.5 1 2.5H15C15.2761 2.5 15.5 2.72386 15.5 3C15.5 3.27614 15.2761 3.5 15 3.5H1C0.723858 3.5 0.5 3.27614 0.5 3Z" fill="black"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.4584 2.5H14.5059L13.6411 13.6926C13.5405 14.9947 12.4546 16 11.1486 16H4.84639C3.54299 16 2.45829 14.9986 2.35435 13.6994L1.4584 2.5ZM2.5416 3.5L3.35117 13.6196C3.41353 14.3992 4.06435 15 4.84639 15H11.1486C11.9322 15 12.5837 14.3968 12.6441 13.6155L13.4256 3.5H2.5416Z" fill="black"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 3.5H5V1.46875C5 0.657582 5.65758 0 6.46875 0H9.53125C10.3424 0 11 0.657582 11 1.46875V3.5ZM6.46875 1C6.20987 1 6 1.20987 6 1.46875V2.5H10V1.46875C10 1.20987 9.79013 1 9.53125 1H6.46875Z" fill="black"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- mobile unactive card-1 end -->
+
+                                <!-- mobile unactive card-2 start -->
+                                <div class="mobile-unactive-card">
+                                    <div class="mobile-unactive-card-up">
+                                        <div class="mobile-unactive-image-container">
+                                            <img class="unactive-image" src="./assets/images/item-2.jpg" alt="" />
+                                        </div>
+                                        <div class="mobile-unactive-params">
+                                            <div class="mobile-unactive-item-params-name">
+                                                <span id="card-2-name"></span>
+                                            </div>
+                                            <div class="mobile-unactive-item-params-color">
+                                                Цвет: <span id="card-2-color"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mobile-unactive-card-down">
+                                        <div class="mobile-unactive-icons">
+                                            <div class="basket-card-heard-icon">
+                                                <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03399 2.05857C2.26592 2.75224 1.76687 3.83284 1.99496 5.42928C2.22335 7.02783 3.26497 8.68522 4.80439 10.3478C6.25868 11.9184 8.10965 13.4437 9.99999 14.874C11.8903 13.4437 13.7413 11.9184 15.1956 10.3478C16.7351 8.68521 17.7767 7.02783 18.005 5.4293C18.2331 3.83285 17.734 2.75224 16.9659 2.05856C16.1767 1.34572 15.055 1 14 1C12.132 1 11.0924 2.08479 10.5177 2.68443C10.4581 2.7466 10.4035 2.80356 10.3535 2.85355C10.1583 3.04882 9.84169 3.04882 9.64643 2.85355C9.59644 2.80356 9.54185 2.7466 9.48227 2.68443C8.9076 2.08479 7.868 1 5.99999 1C4.94498 1 3.82328 1.34573 3.03399 2.05857ZM2.36374 1.31643C3.37372 0.404274 4.75205 0 5.99999 0C8.07126 0 9.34542 1.11257 9.99999 1.77862C10.6545 1.11257 11.9287 0 14 0C15.2479 0 16.6262 0.404275 17.6362 1.31644C18.6674 2.24776 19.2669 3.66715 18.995 5.5707C18.7233 7.47217 17.515 9.31479 15.9294 11.0272C14.3355 12.7486 12.3064 14.3952 10.3 15.9C10.1222 16.0333 9.87776 16.0333 9.69999 15.9C7.69356 14.3952 5.66446 12.7485 4.07063 11.0272C2.48506 9.31478 1.27668 7.47217 1.00501 5.57072C0.733043 3.66716 1.33253 2.24776 2.36374 1.31643Z" fill="black"/>
+                                                </svg>
+                                            </div>
+                                            <div class="basket-card-remove-icon">
+                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 2.72386 0.723858 2.5 1 2.5H15C15.2761 2.5 15.5 2.72386 15.5 3C15.5 3.27614 15.2761 3.5 15 3.5H1C0.723858 3.5 0.5 3.27614 0.5 3Z" fill="black"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.4584 2.5H14.5059L13.6411 13.6926C13.5405 14.9947 12.4546 16 11.1486 16H4.84639C3.54299 16 2.45829 14.9986 2.35435 13.6994L1.4584 2.5ZM2.5416 3.5L3.35117 13.6196C3.41353 14.3992 4.06435 15 4.84639 15H11.1486C11.9322 15 12.5837 14.3968 12.6441 13.6155L13.4256 3.5H2.5416Z" fill="black"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 3.5H5V1.46875C5 0.657582 5.65758 0 6.46875 0H9.53125C10.3424 0 11 0.657582 11 1.46875V3.5ZM6.46875 1C6.20987 1 6 1.20987 6 1.46875V2.5H10V1.46875C10 1.20987 9.79013 1 9.53125 1H6.46875Z" fill="black"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- mobile unactive card-2 end -->
+
+                                <!-- mobile unactive card-3 start -->
+                                <div class="mobile-unactive-card">
+                                    <div class="mobile-unactive-card-up">
+                                        <div class="mobile-unactive-image-container">
+                                            <img class="unactive-image" src="./assets/images/item-3.jpg" alt="" />
+                                        </div>
+                                        <div class="mobile-unactive-params">
+                                            <div class="mobile-unactive-item-params-name">
+                                                <span id="card-3-name"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mobile-unactive-card-down">
+                                        <div class="mobile-unactive-icons">
+                                            <div class="basket-card-heard-icon">
+                                                <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03399 2.05857C2.26592 2.75224 1.76687 3.83284 1.99496 5.42928C2.22335 7.02783 3.26497 8.68522 4.80439 10.3478C6.25868 11.9184 8.10965 13.4437 9.99999 14.874C11.8903 13.4437 13.7413 11.9184 15.1956 10.3478C16.7351 8.68521 17.7767 7.02783 18.005 5.4293C18.2331 3.83285 17.734 2.75224 16.9659 2.05856C16.1767 1.34572 15.055 1 14 1C12.132 1 11.0924 2.08479 10.5177 2.68443C10.4581 2.7466 10.4035 2.80356 10.3535 2.85355C10.1583 3.04882 9.84169 3.04882 9.64643 2.85355C9.59644 2.80356 9.54185 2.7466 9.48227 2.68443C8.9076 2.08479 7.868 1 5.99999 1C4.94498 1 3.82328 1.34573 3.03399 2.05857ZM2.36374 1.31643C3.37372 0.404274 4.75205 0 5.99999 0C8.07126 0 9.34542 1.11257 9.99999 1.77862C10.6545 1.11257 11.9287 0 14 0C15.2479 0 16.6262 0.404275 17.6362 1.31644C18.6674 2.24776 19.2669 3.66715 18.995 5.5707C18.7233 7.47217 17.515 9.31479 15.9294 11.0272C14.3355 12.7486 12.3064 14.3952 10.3 15.9C10.1222 16.0333 9.87776 16.0333 9.69999 15.9C7.69356 14.3952 5.66446 12.7485 4.07063 11.0272C2.48506 9.31478 1.27668 7.47217 1.00501 5.57072C0.733043 3.66716 1.33253 2.24776 2.36374 1.31643Z" fill="black"/>
+                                                </svg>
+                                            </div>
+                                            <div class="basket-card-remove-icon">
+                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 2.72386 0.723858 2.5 1 2.5H15C15.2761 2.5 15.5 2.72386 15.5 3C15.5 3.27614 15.2761 3.5 15 3.5H1C0.723858 3.5 0.5 3.27614 0.5 3Z" fill="black"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.4584 2.5H14.5059L13.6411 13.6926C13.5405 14.9947 12.4546 16 11.1486 16H4.84639C3.54299 16 2.45829 14.9986 2.35435 13.6994L1.4584 2.5ZM2.5416 3.5L3.35117 13.6196C3.41353 14.3992 4.06435 15 4.84639 15H11.1486C11.9322 15 12.5837 14.3968 12.6441 13.6155L13.4256 3.5H2.5416Z" fill="black"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 3.5H5V1.46875C5 0.657582 5.65758 0 6.46875 0H9.53125C10.3424 0 11 0.657582 11 1.46875V3.5ZM6.46875 1C6.20987 1 6 1.20987 6 1.46875V2.5H10V1.46875C10 1.20987 9.79013 1 9.53125 1H6.46875Z" fill="black"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- mobile unactive card-3 end -->
+
+                            </div>
+                            <!-- mobile unactive cards end -->
+                            
+                        </div>
+
+                    </div>
+                    <!-- UnActive items end -->
+
+
+                    <!-- Delivery start -->
+                    <div class="delivery-container">
+                        <div class="delivery-up-section">
+                            <h2 class="delivery-title">Способ доставки</h2>
+                            <h4 id="open-delivery-modal" class="delivery-up-section-params">Изменить</h4>
+                        </div>
+                        <div class="delivery-info">
+
+                            <div class="delivery-info-wrapper">
+                                <div id="delivery-method-1" class="delivery-info-left"></div>
+                                <div class="delivery-info-right">
+                                    <h4 id="delivery-address" class="delivery-info-right-text"></h4>
+                                    <div class="delivery-info-pick-info">
+                                        <div class="delivery-info-pick-reviews">
+                                            <img id="pick-rating-icon" class="review-start-img" src="./assets/icons/reviews-star.svg" alt="" />
+                                            <span id="pick-rating" class="delivery-pick-review"></span>
+                                        </div>
+                                        <span id="pick-working-hours" class="delivery-pick-review"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="delivery-info-wrapper">
+                                <div class="delivery-info-left">Стоимость доставки</div>
+                                <div class="delivery-info-right">
+                                    <h4 class="delivery-info-right-text">Бесплатно</h4>
+                                </div>
+                            </div>
+
+                            <div class="delivery-info-wrapper">
+                                <div id="devivery-date" class="delivery-info-left">5—6 февраля</div>
+                                <div class="delivery-info-right">
+                                    <div class="delivery-images-wrapper">
+                                        <div class="delivery-img"><img src="./assets/images/item-1.jpg" alt="" /></div>
+                                        <div class="delivery-img"><img src="./assets/images/item-2.jpg" alt="" /><div class="delivery-total-items">184</div></div>
+                                        <div class="delivery-img"><img src="./assets/images/item-3.jpg" alt="" /><div class="delivery-total-items">2</div></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="delivery-info-wrapper">
+                                <div id="devivery-date" class="delivery-info-left">7—8 февраля</div>
+                                <div class="delivery-info-right">
+                                    <div class="delivery-images-wrapper">
+                                        <div class="delivery-img"><img src="./assets/images/item-2.jpg" alt="" /><div class="delivery-total-items">16</div></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="delivery-down-wrapper">
+                            <img class="delivery-down-wrapper-icon" src="./assets/icons/check-done-green.svg" alt="" />
+                            <h6 class="delivery-down-text">Обратная доставка товаров на склад при отказе — <span id="delivery-text">бесплатно</span></h6>
+                            <div id="delivery-information" class="hidden">
+                                <div class="delivery-informations-window">
+                                    <p class="delivery-informations-window-text">Если товары вам не подойдут, мы вернем их обратно на склад — это бесплатно</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Delivery end -->
+
+
+                    <!-- Payment section start -->
+                    <div class="payment-section">
+                        <div class="payment-up-wrapper">
+                            <h2 class="payment-title">Способ оплаты</h2>
+                            <h4 id="open-payment-modal" class="payment-up-section-params">Изменить</h4>
+                        </div>
+                        <div class="payment-card-wrapper">
+                            <div class="payment-card-image">
+                                <img id="paymemt-mir-icon" src="./assets/icons/mir-icon.svg" class="payment-card-img" alt="" />
+                                <img id="paymemt-visa-icon" src="./assets/icons/visa-icon.svg" class="payment-card-img hidden" alt="" />
+                                <img id="paymemt-ms-icon" src="./assets/icons/master-card-icon.svg" class="payment-card-img hidden" alt="" />
+                                <img id="paymemt-union-icon" src="./assets/icons/union-pay-icon.svg" class="payment-card-img hidden" alt="" />
+                            </div>
+                            <h4 id="card-number" class="payment-card-number"></h4>
+                            <h4 id="card-exspire" class="payment-card-date"></h4>
+                        </div>
+                        <span class="payment-info">Спишем оплату с карты при получении</span>
+                    </div>
+                    <!-- Payment section end -->
+
+                    <!-- Recipient section start -->
+                    <form class="recipient-section" id="form" name="form">
+                        <h2 class="recipient-title">Получатель</h2>
+
+                        <div class="recipient-up-inputs">
+                            <div class="recipient-up-input-wrapper">
+                                <input id="username" type="text" class="recipient-input" autocomplete="off" required />
+                                <label class="recipient-placeholder">Имя</label>
+                                <div id="error-username" class="hidden"><span id="error-text-name" class="error-input-field"></span></div>
+                            </div>
+                            <div class="recipient-up-input-wrapper">
+                                <input id="user-surname" type="text" class="recipient-input" autocomplete="off" required />
+                                <label class="recipient-placeholder">Фамилия</label>
+                                <div id="error-user-surname" class="hidden"><span id="error-text-surname" class="error-input-field"></span></div>
+                            </div>
+                        </div>
+
+                        <div class="recipient-params-wrapper">
+                            <div class="recipient-down-input-wrapper">
+                                <input id="user-mail" type="text" class="recipient-input" autocomplete="off" required />
+                                <label class="recipient-placeholder">Почта</label>
+                                <div id="error-user-mail" class="hidden"><span id="error-mail-text" class="error-input-field"></span></div>
+                            </div>
+                            <div class="recipient-down-input-wrapper">
+                                <input id="user-phone" type="tel" class="recipient-input" autocomplete="off" required />
+                                <label class="recipient-placeholder">Телефон</label>
+                                <div id="error-user-phone" class="hidden"><span id="error-phone-text" class="error-input-field"></span></div>
+                            </div>
+                            <div class="recipient-down-input-wrapper">
+                                <input id="user-inn" type="number" class="recipient-input" autocomplete="off" required maxlength='14' />
+                                <label class="recipient-placeholder">ИНН</label>
+                                <span id="inn-hint-text" class="recipient-input-info">Для таможенного оформления</span>
+                                <div id="error-user-inn" class="hidden"><span id="error-inn-text" class="error-input-field"></span></div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- Recipient section end -->
+
+                </div>
+
+                <!-- Submit form start-->
+                <div class="final-form-wrapper">
+                    <div class="final-form-up-wrapper">
+                        <h2 class="final-form-up-title">Итого</h2>
+                        <h3 class="final-form-up-quantity"><span id="total-price-2"></span> сом</h2>
+                    </div>
+
+                    <div class="final-form-quantity-info-wrapper">
+                        <div class="form-quantity-info-left">
+                            <p class="form-quantity-info-text"><span id="total-items-2"></span> товара</p>
+                            <p class="form-quantity-info-text">Скидка</p>
+                            <p class="form-quantity-info-text">Доставка</p>
+                        </div>
+                        <div class="form-quantity-info-rigth">
+                            <p class="form-quantity-info-text"><span id="sum-without-discount"></span> сом</p>
+                            <p class="form-quantity-info-text"><span>&#8211 </span> <span id="total-discount"></span> сом</p>
+                            <p class="form-quantity-info-text">Бесплатно</p>
+                        </div>
+                    </div>
+
+                    <div class="final-form-point-wrapper">
+                        <div class="final-form-point-wrapper-up">
+                            <h3 id="delivery-method-2" class="final-form-point-wrapper-up-title"></h3>
+                            <div id="open-delivery-modal" class="final-form-edit-icon">
+                                <img src="./assets/icons/edit-icon.svg" alt="" />
+                            </div>
+                        </div>
+                        <p id="final-form-deliveri-address" class="final-form-point-name"></p>
+                        <p class="final-form-delivery-date">5–8 фев</p>
+                    </div>
+
+                    <div class="final-form-devivery-info-check-wrapper">
+                        <div class="final-form-devivery-info-check-icon">
+                            <img src="./assets/icons/check-done-green.svg" alt="" />
+                        </div>
+                        <div class="final-form-devivery-info-check-text">
+                            Обратная доставка товаров на склад при отказе <span>&#8212</span> 
+                            <span id="delivery-text-2">бесплатно</span>
+                        </div>
+                        <div id="delivery-information-2" class="hidden">
+                            <div class="final-form-delivery-informations-window">
+                                <p class="final-form-delivery-informations-window-text">Если товары вам не подойдут, мы вернем их обратно на склад — это бесплатно</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="final-form-payment-info-wrapper">
+                        <div class="final-form-payment-info-up">
+                            <h3 class="final-form-payment-info-title">Оплата картой</h3>
+                            <div id="open-payment-modal" class="final-form-edit-icon">
+                                <img src="./assets/icons/edit-icon.svg" alt="" />
+                            </div>
+                        </div>
+                        <div class="final-form-payment-info-card-params">
+                            <div class="payment-card-image">
+                                <img id="paymemt-mir-icon" src="./assets/icons/mir-icon.svg" class="payment-card-img" alt="" />
+                                <img id="paymemt-visa-icon" src="./assets/icons/visa-icon.svg" class="payment-card-img hidden" alt="" />
+                                <img id="paymemt-ms-icon" src="./assets/icons/master-card-icon.svg" class="payment-card-img hidden" alt="" />
+                                <img id="paymemt-union-icon" src="./assets/icons/union-pay-icon.svg" class="payment-card-img hidden" alt="" />
+                            </div>
+                            <span id="card-number" class="final-form-payment-info-card-num"></span>
+                        </div>
+                    </div>
+
+                    <div class="final-form-confirmation-payment-wrapper">
+                        <div class="final-form-confirmation-payment-up">
+                            <div class="final-form-confirmation-payment-up-checkboxs-container">
+                                <img id="payment-uncheck" src="./assets/icons/checkbox-fake-container.svg" alt="" />
+                                <img id="payment-check" src="./assets/icons/checkbox.svg" class="hidden" alt="" />
+                            </div>
+                            <h4 class="final-form-confirmation-payment-text">Списать оплату сразу</h4>
+                        </div>
+                        <h4 class="final-form-confirmation-payment-text">Спишем оплату с карты при получении</h4>
+                    </div>
+
+                    <button id="button" type="submit" class="final-form-button"></button>
+
+                    <div class="final-form-down-wrapper">
+                        <div class="final-form-down-wrapper-check">
+                            <img src="./assets/icons/black-check.svg" alt="" />
+                        </div>
+                        <span class="final-form-down-wrapper-text">Соглашаюсь с правилами пользования торговой площадкой и возврата</span>
+                    </div>
+
+                </div>
+                <!-- Submit form end-->
+
+
+                <!-- Delivery params modal start -->
+                <div id="delivery-modal" class="delivery-params-modal">
+
+                    <div id="delivery-modal-container" class="delivery-params-modal-container">
+                        <div class="delivery-modal-up">
+                            <h2 class="delivery-modal-title">Способ доставки</h2>
+                            <div class="delivery-modal-close">
+                                <img src="./assets/icons/close-icon.svg" alt="x" />
+                            </div>
+                        </div>
+                        <div class="delivery-modal-options">
+                            <div id="select-delivery-pick" class="delivery-modal-options-button delivery-modal-options-button-active">В пункт выдачи</div>
+                            <div id="select-delivery-courier" class="delivery-modal-options-button">Курьером</div>
+                        </div>
+
+                        <div class="delivery-address-wrapper">
+                            <h4 class="delivery-address-wrapper-title">Мои адреса</h4>
+
+                            <div id="delivery-user-adsress-container" class="hidden">
+                                <div class="delivery-users-adress-cards">
+
+                                    <div class="delivery-address-card">
+                                        <div class="delivery-address-card-left">
+                                            <div class="delivery-address-card-checkbox">
+                                                <img id="user-address-checkbox-1" src="./assets/icons/radio-check.svg" class="delivery-address-card-checkbox-img hidden" alt="" />
+                                                <img id="user-address-fake-checkbox-1" src="./assets/icons/radio-check-fake.svg" class="delivery-address-card-checkbox-img" alt="" />
+                                            </div>
+                                            <h5 id="user-address-1" class="delivery-address-card-text"></h5>
+                                        </div>
+                                        <div class="delivery-address-remove-icon">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 2.72386 0.723858 2.5 1 2.5H15C15.2761 2.5 15.5 2.72386 15.5 3C15.5 3.27614 15.2761 3.5 15 3.5H1C0.723858 3.5 0.5 3.27614 0.5 3Z" fill="black"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.4584 2.5H14.5059L13.6411 13.6926C13.5405 14.9947 12.4546 16 11.1486 16H4.84639C3.54299 16 2.45829 14.9986 2.35435 13.6994L1.4584 2.5ZM2.5416 3.5L3.35117 13.6196C3.41353 14.3992 4.06435 15 4.84639 15H11.1486C11.9322 15 12.5837 14.3968 12.6441 13.6155L13.4256 3.5H2.5416Z" fill="black"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M11 3.5H5V1.46875C5 0.657582 5.65758 0 6.46875 0H9.53125C10.3424 0 11 0.657582 11 1.46875V3.5ZM6.46875 1C6.20987 1 6 1.20987 6 1.46875V2.5H10V1.46875C10 1.20987 9.79013 1 9.53125 1H6.46875Z" fill="black"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+        
+                                    <div class="delivery-address-card">
+                                        <div class="delivery-address-card-left">
+                                            <div class="delivery-address-card-checkbox">
+                                                <img id="user-address-checkbox-2" src="./assets/icons/radio-check.svg" class="delivery-address-card-checkbox-img hidden" alt="" />
+                                                <img id="user-address-fake-checkbox-2" src="./assets/icons/radio-check-fake.svg" class="delivery-address-card-checkbox-img" alt="" />
+                                            </div>
+                                            <h5 id="user-address-2" class="delivery-address-card-text"></h5>
+                                        </div>
+                                        <div class="delivery-address-remove-icon">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 2.72386 0.723858 2.5 1 2.5H15C15.2761 2.5 15.5 2.72386 15.5 3C15.5 3.27614 15.2761 3.5 15 3.5H1C0.723858 3.5 0.5 3.27614 0.5 3Z" fill="black"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.4584 2.5H14.5059L13.6411 13.6926C13.5405 14.9947 12.4546 16 11.1486 16H4.84639C3.54299 16 2.45829 14.9986 2.35435 13.6994L1.4584 2.5ZM2.5416 3.5L3.35117 13.6196C3.41353 14.3992 4.06435 15 4.84639 15H11.1486C11.9322 15 12.5837 14.3968 12.6441 13.6155L13.4256 3.5H2.5416Z" fill="black"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M11 3.5H5V1.46875C5 0.657582 5.65758 0 6.46875 0H9.53125C10.3424 0 11 0.657582 11 1.46875V3.5ZM6.46875 1C6.20987 1 6 1.20987 6 1.46875V2.5H10V1.46875C10 1.20987 9.79013 1 9.53125 1H6.46875Z" fill="black"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+        
+                                    <div class="delivery-address-card">
+                                        <div class="delivery-address-card-left">
+                                            <div class="delivery-address-card-checkbox">
+                                                <img id="user-address-checkbox-3" src="./assets/icons/radio-check.svg" class="delivery-address-card-checkbox-img hidden" alt="" />
+                                                <img id="user-address-fake-checkbox-3" src="./assets/icons/radio-check-fake.svg" class="delivery-address-card-checkbox-img" alt="" />
+                                            </div>
+                                            <h5 id="user-address-3" class="delivery-address-card-text"></h5>
+                                        </div>
+                                        <div class="delivery-address-remove-icon">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 2.72386 0.723858 2.5 1 2.5H15C15.2761 2.5 15.5 2.72386 15.5 3C15.5 3.27614 15.2761 3.5 15 3.5H1C0.723858 3.5 0.5 3.27614 0.5 3Z" fill="black"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.4584 2.5H14.5059L13.6411 13.6926C13.5405 14.9947 12.4546 16 11.1486 16H4.84639C3.54299 16 2.45829 14.9986 2.35435 13.6994L1.4584 2.5ZM2.5416 3.5L3.35117 13.6196C3.41353 14.3992 4.06435 15 4.84639 15H11.1486C11.9322 15 12.5837 14.3968 12.6441 13.6155L13.4256 3.5H2.5416Z" fill="black"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M11 3.5H5V1.46875C5 0.657582 5.65758 0 6.46875 0H9.53125C10.3424 0 11 0.657582 11 1.46875V3.5ZM6.46875 1C6.20987 1 6 1.20987 6 1.46875V2.5H10V1.46875C10 1.20987 9.79013 1 9.53125 1H6.46875Z" fill="black"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="delivery-pick-adsress-container">
+                                <div class="delivery-users-adress-cards">
+                                    
+                                    <div class="delivery-address-card">
+                                        <div class="delivery-address-card-left">
+                                            <div class="delivery-address-card-checkbox">
+                                                <img src="./assets/icons/radio-check.svg" class="delivery-address-card-checkbox-img" id="checkbox-addresss-1" alt="" />
+                                                <img src="./assets/icons/radio-check-fake.svg" class="delivery-address-card-checkbox-img hidden" id="checkbox-fake-addresss-1" alt="" />
+                                            </div>
+                                            <div class="delivery-address-card-text-box">
+                                                <h5 id="delivery-pick-address-1" class="delivery-address-card-text"></h5>
+                                                <div class="delivery-address-card-text-box-review">
+                                                    <div class="delivery-address-card-text-box-review-star">
+                                                        <img src="./assets/icons/reviews-star.svg" alt="" />
+                                                        <span id="delivery-pick-rating-1"></span>
+                                                    </div>
+                                                    <span id="delivery-pick-name-1"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="delivery-address-remove-icon">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 2.72386 0.723858 2.5 1 2.5H15C15.2761 2.5 15.5 2.72386 15.5 3C15.5 3.27614 15.2761 3.5 15 3.5H1C0.723858 3.5 0.5 3.27614 0.5 3Z" fill="black"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.4584 2.5H14.5059L13.6411 13.6926C13.5405 14.9947 12.4546 16 11.1486 16H4.84639C3.54299 16 2.45829 14.9986 2.35435 13.6994L1.4584 2.5ZM2.5416 3.5L3.35117 13.6196C3.41353 14.3992 4.06435 15 4.84639 15H11.1486C11.9322 15 12.5837 14.3968 12.6441 13.6155L13.4256 3.5H2.5416Z" fill="black"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M11 3.5H5V1.46875C5 0.657582 5.65758 0 6.46875 0H9.53125C10.3424 0 11 0.657582 11 1.46875V3.5ZM6.46875 1C6.20987 1 6 1.20987 6 1.46875V2.5H10V1.46875C10 1.20987 9.79013 1 9.53125 1H6.46875Z" fill="black"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+        
+                                    <div class="delivery-address-card">
+                                        <div class="delivery-address-card-left">
+                                            <div class="delivery-address-card-checkbox">
+                                                <img src="./assets/icons/radio-check.svg" class="delivery-address-card-checkbox-img hidden" id="checkbox-addresss-2" alt="" />
+                                                <img src="./assets/icons/radio-check-fake.svg" class="delivery-address-card-checkbox-img" id="checkbox-fake-addresss-2" alt="" />
+                                            </div>
+                                            <div class="delivery-address-card-text-box">
+                                                <h5 id="delivery-pick-address-2" class="delivery-address-card-text"></h5>
+                                                <div class="delivery-address-card-text-box-review">
+                                                    <div class="delivery-address-card-text-box-review-star">
+                                                        <img src="./assets/icons/reviews-star.svg" alt="" />
+                                                        <span id="delivery-pick-rating-2"></span>
+                                                    </div>
+                                                    <span id="delivery-pick-name-2"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="delivery-address-remove-icon">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 2.72386 0.723858 2.5 1 2.5H15C15.2761 2.5 15.5 2.72386 15.5 3C15.5 3.27614 15.2761 3.5 15 3.5H1C0.723858 3.5 0.5 3.27614 0.5 3Z" fill="black"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.4584 2.5H14.5059L13.6411 13.6926C13.5405 14.9947 12.4546 16 11.1486 16H4.84639C3.54299 16 2.45829 14.9986 2.35435 13.6994L1.4584 2.5ZM2.5416 3.5L3.35117 13.6196C3.41353 14.3992 4.06435 15 4.84639 15H11.1486C11.9322 15 12.5837 14.3968 12.6441 13.6155L13.4256 3.5H2.5416Z" fill="black"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M11 3.5H5V1.46875C5 0.657582 5.65758 0 6.46875 0H9.53125C10.3424 0 11 0.657582 11 1.46875V3.5ZM6.46875 1C6.20987 1 6 1.20987 6 1.46875V2.5H10V1.46875C10 1.20987 9.79013 1 9.53125 1H6.46875Z" fill="black"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+        
+                                    <div class="delivery-address-card">
+                                        <div class="delivery-address-card-left">
+                                            <div class="delivery-address-card-checkbox">
+                                                <img src="./assets/icons/radio-check.svg" class="delivery-address-card-checkbox-img hidden" id="checkbox-addresss-3" alt="" />
+                                                <img src="./assets/icons/radio-check-fake.svg" class="delivery-address-card-checkbox-img" id="checkbox-fake-addresss-3" alt="" />
+                                            </div>
+                                            <div class="delivery-address-card-text-box">
+                                                <h5 id="delivery-pick-address-3" class="delivery-address-card-text"></h5>
+                                                <div class="delivery-address-card-text-box-review">
+                                                    <div class="delivery-address-card-text-box-review-star">
+                                                        <img src="./assets/icons/reviews-star.svg" alt="" />
+                                                        <span id="delivery-pick-rating-3"></span>
+                                                    </div>
+                                                    <span id="delivery-pick-name-3"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="delivery-address-remove-icon">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 2.72386 0.723858 2.5 1 2.5H15C15.2761 2.5 15.5 2.72386 15.5 3C15.5 3.27614 15.2761 3.5 15 3.5H1C0.723858 3.5 0.5 3.27614 0.5 3Z" fill="black"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.4584 2.5H14.5059L13.6411 13.6926C13.5405 14.9947 12.4546 16 11.1486 16H4.84639C3.54299 16 2.45829 14.9986 2.35435 13.6994L1.4584 2.5ZM2.5416 3.5L3.35117 13.6196C3.41353 14.3992 4.06435 15 4.84639 15H11.1486C11.9322 15 12.5837 14.3968 12.6441 13.6155L13.4256 3.5H2.5416Z" fill="black"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M11 3.5H5V1.46875C5 0.657582 5.65758 0 6.46875 0H9.53125C10.3424 0 11 0.657582 11 1.46875V3.5ZM6.46875 1C6.20987 1 6 1.20987 6 1.46875V2.5H10V1.46875C10 1.20987 9.79013 1 9.53125 1H6.46875Z" fill="black"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button id="submit-delivery-pick" type="button" class="delivery-modal-button">Выбрать</button>
+
+                    </div>
+
+                </div>
+                <!-- Delivery params modal end -->
+
+                <!-- Payment method start -->
+                <div id="payment-modal" class="paymemt-method-modal">
+                    <div class="paymemt-method-modal-container">
+                        <div class="paymemt-method-modal-up">
+                            <h3 class="paymemt-method-modal-up-title">Способ оплаты</h3>
+                            <div id="close-payment-modal" class="paymemt-method-modal-close">
+                                <img src="./assets/icons/close-icon.svg" alt="" />
+                            </div>
+                        </div>
+
+                        <div class="payment-cards-list">
+
+                            <div class="payment-card-wrapper">
+                                <div class="payment-card-checks-container">
+                                    <img id="payment-card-check-radio-1" src="./assets/icons/radio-check.svg" alt="" />
+                                    <img id="payment-card-check-radio-fake-1" src="./assets/icons/radio-check-fake.svg" class="hidden" alt="" />
+                                </div>
+                                <div class="payment-card-number-container">
+                                    <img src="./assets/icons/mir-icon.svg" alt="" />
+                                    <h4 id="card-number-1" class="payment-card-number"></h4>
+                                </div>
+                            </div>
+
+                            <div class="payment-card-wrapper">
+                                <div class="payment-card-checks-container">
+                                    <img id="payment-card-check-radio-2" src="./assets/icons/radio-check.svg" class="hidden" alt="" />
+                                    <img id="payment-card-check-radio-fake-2" src="./assets/icons/radio-check-fake.svg" alt="" />
+                                </div>
+                                <div class="payment-card-number-container">
+                                    <img src="./assets/icons/visa-icon.svg" alt="" />
+                                    <h4 id="card-number-2" class="payment-card-number"></h4>
+                                </div>
+                            </div>
+
+                            <div class="payment-card-wrapper">
+                                <div class="payment-card-checks-container">
+                                    <img id="payment-card-check-radio-3" src="./assets/icons/radio-check.svg" class="hidden" alt="" />
+                                    <img id="payment-card-check-radio-fake-3" src="./assets/icons/radio-check-fake.svg" alt="" />
+                                </div>
+                                <div class="payment-card-number-container">
+                                    <img src="./assets/icons/master-card-icon.svg" alt="" />
+                                    <h4 id="card-number-3" class="payment-card-number"></h4>
+                                </div>
+                            </div>
+
+                            <div class="payment-card-wrapper">
+                                <div class="payment-card-checks-container">
+                                    <img id="payment-card-check-radio-4" src="./assets/icons/radio-check.svg" class="hidden" alt="" />
+                                    <img id="payment-card-check-radio-fake-4" src="./assets/icons/radio-check-fake.svg" alt="" />
+                                </div>
+                                <div class="payment-card-number-container">
+                                    <img src="./assets/icons/union-pay-icon.svg" alt="" />
+                                    <h4 id="card-number-4" class="payment-card-number"></h4>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button id="select-payment-card" type="button" class="paymemt-modal-button">Выбрать</button>
+
+                    </div>
+                </div>
+                <!-- Payment method end -->
+
+            </div>
+        </div>
+    </main>
+    <!-- Main end-->
+
+    <!-- Footer start -->
+    <footer class="footer">
+        <div class="footer-text">© 2022  ООО «Товары и точка»</div>
+    </footer>
+    <!-- Footer end -->
+    
+    <script src="./js/index.js"></script>
+    <script src="./js/delivery.js"></script>
+    <script src="./js/payment.js"></script>
+    <script src="./js/hints.js"></script>
+</body>
+</html>
