@@ -293,10 +293,11 @@
                                     <div class="active-items-right-section">
                                         <div class="basket-active-card-counter-container">
                                             <div class="card-counter">
-                                                <span id="card-3-counter-unactive-minus" class="counter-param counter-param_unactive">-</span>
-                                                <span id="card-3-counter-active-minus" class="counter-param-active hidden">-</span>
+                                                <span id="card-3-counter-unactive-minus" class="counter-param counter-param_unactive hidden">-</span>
+                                                <span id="card-3-counter-active-minus" class="counter-param-active">-</span>
                                                 <span id="card-3-selected-products" class="counter-num"></span>
-                                                <span class="counter-param-active">+</span>
+                                                <span id="card-3-counter-active-plus" class="counter-param-active">+</span>
+                                                <span id="card-3-counter-unactive-plus" class="counter-param counter-param_unactive hidden">+</span>
                                             </div>
                                             <p class="items-counter-num-info">Осталось <span id="card-3-total-items"></span> шт.</p>
                                             <div id="icons-3" class="basket-hidden-card-counter-icons">
@@ -380,8 +381,8 @@
                                             <span id="card-1-counter-unactive-minus" class="counter-param counter-param_unactive">-</span>
                                             <span id="card-1-counter-active-minus" class="counter-param-active hidden">-</span>
                                             <span id="card-1-selected-products" class="mobile-counter-num"></span>
-                                            <span class="counter-param counter-param_unactive hidden">+</span>
-                                            <span class="counter-param-active">+</span>
+                                            <span id="card-1-counter-unactive-plus" class="counter-param counter-param_unactive hidden">+</span>
+                                            <span id="card-1-counter-active-plus" class="counter-param-active">+</span>
                                         </div>
                                         <p class="items-counter-num-info">Осталось <span id="card-1-total-items"></span> шт.</p>
                                         <div class="mobile-card-icons">
@@ -435,8 +436,8 @@
                                             <span id="card-2-counter-unactive-minus" class="counter-param counter-param_unactive">-</span>
                                             <span id="card-2-counter-active-minus" class="counter-param-active hidden">-</span>
                                             <span id="card-2-selected-products" class="mobile-counter-num"></span>
-                                            <span class="counter-param counter-param_unactive hidden">+</span>
-                                            <span class="counter-param-active">+</span>
+                                            <span id="card-2-counter-unactive-plus" class="counter-param counter-param_unactive hidden">+</span>
+                                            <span id="card-2-counter-active-plus" class="counter-param-active">+</span>
                                         </div>
                                         <div class="mobile-card-icons">
                                             <div class="basket-card-heard-icon">
@@ -483,11 +484,11 @@
                                     </div>
                                     <div class="active-mobile-card-down">
                                         <div class="mobile-card-counter">
-                                            <span id="card-3-counter-unactive-minus" class="counter-param counter-param_unactive">-</span>
-                                            <span id="card-3-counter-active-minus" class="counter-param-active hidden">-</span>
-                                            <span id="card-3-selected-products" class="mobile-counter-num"></span>
-                                            <span class="counter-param counter-param_unactive hidden">+</span>
-                                            <span class="counter-param-active">+</span>
+                                            <span id="card-3-counter-unactive-minus" class="counter-param counter-param_unactive hidden">-</span>
+                                            <span id="card-3-counter-active-minus" class="counter-param-active">-</span>
+                                            <span id="card-3-selected-products" class="counter-num"></span>
+                                            <span id="card-3-counter-active-plus" class="counter-param-active">+</span>
+                                            <span id="card-3-counter-unactive-plus" class="counter-param counter-param_unactive hidden">+</span>
                                         </div>
                                         <p class="items-counter-num-info">Осталось <span id="card-3-total-items"></span> шт.</p>
                                         <div class="mobile-card-icons">
@@ -756,22 +757,22 @@
                                 </div>
                             </div>
 
-                            <div class="delivery-info-wrapper">
-                                <div id="devivery-date" class="delivery-info-left">5—6 февраля</div>
+                            <div id="devivery-first-date" class="delivery-info-wrapper">
+                                <div class="delivery-info-left">5—6 февраля</div>
                                 <div class="delivery-info-right">
                                     <div class="delivery-images-wrapper">
-                                        <div class="delivery-img"><img src="./assets/images/item-1.jpg" alt="" /></div>
-                                        <div class="delivery-img"><img src="./assets/images/item-2.jpg" alt="" /><div class="delivery-total-items">184</div></div>
-                                        <div class="delivery-img"><img src="./assets/images/item-3.jpg" alt="" /><div class="delivery-total-items">2</div></div>
+                                        <div id="delivery-item-image-1" class="delivery-img"><img src="./assets/images/item-1.jpg" alt="" /></div>
+                                        <div id="delivery-item-image-2" class="delivery-img"><img src="./assets/images/item-2.jpg" alt="" /><div class="delivery-total-items">184</div></div>
+                                        <div id="delivery-item-image-3" class="delivery-img"><img src="./assets/images/item-3.jpg" alt="" /><div class="delivery-total-items">2</div></div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="delivery-info-wrapper">
-                                <div id="devivery-date" class="delivery-info-left">7—8 февраля</div>
+                            <div id="devivery-second-date" class="delivery-info-wrapper">
+                                <div class="delivery-info-left">7—8 февраля</div>
                                 <div class="delivery-info-right">
                                     <div class="delivery-images-wrapper">
-                                        <div class="delivery-img"><img src="./assets/images/item-2.jpg" alt="" /><div class="delivery-total-items">16</div></div>
+                                        <div id="delivery-item-image-2" class="delivery-img"><img src="./assets/images/item-2.jpg" alt="" /><div class="delivery-total-items">16</div></div>
                                     </div>
                                 </div>
                             </div>
@@ -855,12 +856,12 @@
                 <div class="final-form-wrapper">
                     <div class="final-form-up-wrapper">
                         <h2 class="final-form-up-title">Итого</h2>
-                        <h3 class="final-form-up-quantity"><span id="total-price-2"></span> сом</h2>
+                        <h3 class="final-form-up-quantity"><span id="total-price"></span> сом</h2>
                     </div>
 
                     <div class="final-form-quantity-info-wrapper">
                         <div class="form-quantity-info-left">
-                            <p class="form-quantity-info-text"><span id="total-items-2"></span> товара</p>
+                            <p class="form-quantity-info-text"><span id="total-items"></span> товара</p>
                             <p class="form-quantity-info-text">Скидка</p>
                             <p class="form-quantity-info-text">Доставка</p>
                         </div>

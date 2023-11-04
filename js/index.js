@@ -85,17 +85,13 @@ let totalWithoutDiscountSum = sum(
 let totalItemsSum = sum(items[0].selected_products, items[1].selected_products, items[2].selected_products);
 let totalDiscountSum = substraction(totalWithoutDiscountSum, totalPriceSum);
 
-let totalItem = document.getElementById('total-items');
-let totalPrice = document.getElementById('total-price');
-let totalItem2 = document.getElementById('total-items-2');
-let totalPrice2 = document.getElementById('total-price-2');
+let totalItem = document.querySelectorAll('#total-items');
+let totalPrice = document.querySelectorAll('#total-price');
 let sumWithoutDiscount = document.getElementById('sum-without-discount');
 let totalDiscount = document.getElementById('total-discount');
 
-totalItem.innerHTML = totalItemsSum;
-totalPrice.innerHTML = totalPriceSum;
-totalItem2.innerHTML = totalItemsSum;
-totalPrice2.innerHTML = totalPriceSum;
+totalItem.forEach((item) => item.innerHTML = totalItemsSum);
+totalPrice.forEach((item) => item.innerHTML = totalPriceSum);
 sumWithoutDiscount.innerHTML = totalWithoutDiscountSum;
 totalDiscount.innerHTML = totalDiscountSum;
 
@@ -115,6 +111,7 @@ let firstCardSelectedProducts = document.querySelectorAll('#card-1-selected-prod
 let firstCardTotalItems = document.querySelectorAll('#card-1-total-items');
 let firstCardPrice = document.querySelectorAll('#card-1-price');
 let firstCardOldPrice = document.querySelectorAll('#card-1-old-price');
+let firstCardDeliveryImg = document.getElementById('delivery-item-image-1');
 
 firstCardName.forEach((item) => item.innerHTML = items[0].name);
 firstCardColor.forEach((item) => item.innerHTML = items[0].params.color);
@@ -140,6 +137,7 @@ let secondCardCompanyInfoAddress = document.getElementById('card-2-company-info-
 let secondCardSelectedProducts = document.querySelectorAll('#card-2-selected-products');
 let secondCardPrice = document.querySelectorAll('#card-2-price');
 let secondCardOldPrice = document.querySelectorAll('#card-2-old-price');
+let secondCardDeliveryImg = document.querySelectorAll('#delivery-item-image-2');
 
 secondCardName.forEach((item) => item.innerHTML = items[1].name);
 secondCardColor.forEach((item) => item.innerHTML = items[1].params.color);
@@ -163,6 +161,7 @@ let thirdCardSelectedProducts = document.querySelectorAll('#card-3-selected-prod
 let thirdCardTotalItems = document.querySelectorAll('#card-3-total-items');
 let thirdCardPrice = document.querySelectorAll('#card-3-price');
 let thirdCardOldPrice = document.querySelectorAll('#card-3-old-price');
+let thirdCardDeliveryImg = document.getElementById('delivery-item-image-3');
 
 thirdCardName.forEach((item) => item.innerHTML = items[2].name);
 thirdCardPlace.forEach((item) => item.innerHTML = items[2].params.place);
@@ -179,101 +178,185 @@ thirdCardOldPrice.forEach((item) => item.innerHTML = multiplication(items[2].old
 // Счетчик добавить/убрать товар
 
 // Счетчик 1 карточки
-let firstCardCounterUnactiveMinus = document.getElementById('card-1-counter-unactive-minus');
-let firstCardCounterActiveMinus = document.getElementById('card-1-counter-active-minus');
-let firstCardCounterUnactivePlus = document.getElementById('card-1-counter-unactive-plus');
-let firstCardCounterActivePlus = document.getElementById('card-1-counter-active-plus');
+let firstCardCounterUnactiveMinus = document.querySelectorAll('#card-1-counter-unactive-minus');
+let firstCardCounterActiveMinus = document.querySelectorAll('#card-1-counter-active-minus');
+let firstCardCounterUnactivePlus = document.querySelectorAll('#card-1-counter-unactive-plus');
+let firstCardCounterActivePlus = document.querySelectorAll('#card-1-counter-active-plus');
 
 let allPriceFirstCard = multiplication(items[0].price, items[0].selected_products);
 let allOldPriceFirstCard = multiplication(items[0].old_price, items[0].selected_products);
 let allSelectedItemsFirstCard = items[0].selected_products;
 let allTotalItemsFirstCard = substraction(items[0].total, items[0].selected_products);
 
-firstCardCounterActivePlus.addEventListener('click', addOneItemFromCard1);
-firstCardCounterActiveMinus.addEventListener('click', removeOneItemFromCard1);
+firstCardCounterActivePlus.forEach((item) => item.addEventListener('click', addOneItemFromCard1));
+firstCardCounterActiveMinus.forEach((item) => item.addEventListener('click', removeOneItemFromCard1));
 
 
 function addOneItemFromCard1() {
     let price = allPriceFirstCard += items[0].price;
-    firstCardPrice.innerHTML = price;
-
     let oldPrice = allOldPriceFirstCard += items[0].old_price;
-    firstCardOldPrice.innerHTML = oldPrice;
+    let selectedItems = allSelectedItemsFirstCard += 1;
+    let total = allTotalItemsFirstCard -= 1;
+    let allTotal = totalItemsSum += 1;
+    let allPrice = Math.floor(totalPriceSum += items[0].price);
 
-    firstCardSelectedProducts.innerHTML = allSelectedItemsFirstCard += 1;
+    firstCardPrice.forEach((item) => item.innerHTML = price);
+    firstCardOldPrice.forEach((item) => item.innerHTML = oldPrice);
+    firstCardSelectedProducts.forEach((item) => item.innerHTML = selectedItems);
+    firstCardTotalItems.forEach((item) => item.innerHTML = total);
+    totalItem.forEach((item) => item.innerHTML = allTotal);
+    totalPrice.forEach((item) => item.innerHTML = allPrice);
 
-    let totalCounter1 = allTotalItemsFirstCard -= 1;
-    firstCardTotalItems.innerHTML = totalCounter1;
-
-    totalItem.innerHTML = totalItemsSum += 1;
-    totalPrice.innerHTML = totalPriceSum + price;
-    totalItem2.innerHTML = totalItemsSum += 1;
-    totalPrice2.innerHTML = totalPriceSum + (oldPrice);
-    sumWithoutDiscount.innerHTML = totalWithoutDiscountSum + (allOldPriceFirstCard += items[0].old_price);
-    totalDiscount.innerHTML = (totalWithoutDiscountSum + (allOldPriceFirstCard += items[0].old_price)) - (totalPriceSum + price);
-    
-    if (totalCounter1 === 0) {
-        firstCardCounterActivePlus.classList.add('hidden');
-        firstCardCounterUnactivePlus.classList.remove('hidden');
-        firstCardCounterUnactiveMinus.classList.add('hidden');
-        firstCardCounterActiveMinus.classList.remove('hidden');
-        return
-    }
-
-    if (totalCounter1 > 0) {
-        firstCardCounterUnactiveMinus.classList.add('hidden');
-        firstCardCounterActiveMinus.classList.remove('hidden');
-        return
-    }
-}
-
-function removeOneItemFromCard1() {
-    firstCardPrice.innerHTML = allPriceFirstCard -= items[0].price;
-    firstCardOldPrice.innerHTML = allOldPriceFirstCard -= items[0].old_price;
-
-    let totalSelectItems = allSelectedItemsFirstCard -= 1;
-    firstCardSelectedProducts.innerHTML = totalSelectItems;
-    
-    let totalCounter1 = allTotalItemsFirstCard;
-    firstCardTotalItems.innerHTML = totalCounter1 += 1;
-    console.log(totalItemsSum -= 1);
-    
-    totalItem.innerHTML =  totalItemsSum = totalItemsSum - 1;
-
-    if (totalSelectItems === 1) {
-        firstCardCounterUnactiveMinus.classList.remove('hidden');
-        firstCardCounterActiveMinus.classList.add('hidden');
-    } else if (totalSelectItems > 1) {
-        firstCardCounterActivePlus.classList.remove('hidden');
-        firstCardCounterUnactivePlus.classList.add('hidden');
+    if (total === 0) {
+        firstCardCounterActivePlus.forEach((item) => item.classList.add('hidden'));
+        firstCardCounterUnactivePlus.forEach((item) => item.classList.remove('hidden'));
+        firstCardCounterUnactiveMinus.forEach((item) => item.classList.add('hidden'));
+        firstCardCounterActiveMinus.forEach((item) => item.classList.remove('hidden'));
+    } else if (total > 0) {
+        firstCardCounterUnactiveMinus.forEach((item) => item.classList.add('hidden'));
+        firstCardCounterActiveMinus.forEach((item) => item.classList.remove('hidden'));
     } else {
         return
     }
 }
 
+function removeOneItemFromCard1() {
+    let price = allPriceFirstCard -= items[0].price;
+    let oldPrice = allOldPriceFirstCard -= items[0].old_price;
+    let selectedItems = allSelectedItemsFirstCard -= 1;
+    let total = allTotalItemsFirstCard += 1;
+    let allTotal = totalItemsSum -= 1;
+    let allPrice = Math.floor(totalPriceSum -= items[0].price);
+
+    firstCardPrice.forEach((item) => item.innerHTML = price);
+    firstCardOldPrice.forEach((item) => item.innerHTML = oldPrice);
+    firstCardSelectedProducts.forEach((item) => item.innerHTML = selectedItems);
+    firstCardTotalItems.forEach((item) => item.innerHTML = total);
+    totalItem.forEach((item) => item.innerHTML = allTotal);
+    totalPrice.forEach((item) => item.innerHTML = allPrice);
+
+    if (total !== 0) {
+        firstCardCounterActivePlus.forEach((item) => item.classList.remove('hidden'));
+        firstCardCounterUnactivePlus.forEach((item) => item.classList.add('hidden'));
+    }
+    
+    if (selectedItems === 1) {
+        firstCardCounterUnactiveMinus.forEach((item) => item.classList.remove('hidden'));
+        firstCardCounterActiveMinus.forEach((item) => item.classList.add('hidden'));
+    }
+}
+
 
 // Счетчик второй карточки
-let secondCardCounterUnactiveMinus = document.getElementById('card-2-counter-unactive-minus');
-let secondCardCounterActiveMinus = document.getElementById('card-2-counter-active-minus');
-let secondCardCounterUnactivePlus = document.getElementById('card-2-counter-unactive-plus');
-let secondCardCounterActivePlus = document.getElementById('card-2-counter-active-plus');
+let secondCardCounterUnactiveMinus = document.querySelectorAll('#card-2-counter-unactive-minus');
+let secondCardCounterActiveMinus = document.querySelectorAll('#card-2-counter-active-minus');
+let secondCardCounterUnactivePlus = document.querySelectorAll('#card-2-counter-unactive-plus');
+let secondCardCounterActivePlus = document.querySelectorAll('#card-2-counter-active-plus');
 
 let allPriceSecondCard = multiplication(items[1].price, items[1].selected_products);
 let allOldPriceSecondCard = multiplication(items[1].old_price, items[1].selected_products);
 let allSelectedItemsSecondCard = items[1].selected_products;
-let allTotalItemsSecondCard = substraction(items[1].total, items[1].selected_products);
 
-secondCardCounterActivePlus.addEventListener('click', addOneItemFromCard2);
-secondCardCounterActiveMinus.addEventListener('click', removeOneItemFromCard2);
+secondCardCounterActivePlus.forEach((item) => item.addEventListener('click', addOneItemFromCard2));
+secondCardCounterActiveMinus.forEach((item) => item.addEventListener('click', removeOneItemFromCard2));
 
 function addOneItemFromCard2() {
-    console.log('1');
+    let price = Math.floor(allPriceSecondCard += items[1].price);
+    let oldPrice = Math.floor(allOldPriceSecondCard += items[1].old_price);
+    let selectedItems = allSelectedItemsSecondCard += 1;
+    let allTotal = totalItemsSum += 1;
+    let allPrice = Math.floor(totalPriceSum += items[1].price);
+
+    secondCardPrice.forEach((item) => item.innerHTML = price);
+    secondCardOldPrice.forEach((item) => item.innerHTML = oldPrice);
+    secondCardSelectedProducts.forEach((item) => item.innerHTML = selectedItems);
+    totalItem.forEach((item) => item.innerHTML = allTotal);
+    totalPrice.forEach((item) => item.innerHTML = allPrice);
 }
 
 function removeOneItemFromCard2() {
-    console.log('-1');
+    let price = Math.floor(allPriceSecondCard -= items[1].price);
+    let oldPrice = Math.floor(allOldPriceSecondCard -= items[1].old_price);
+    let selectedItems = allSelectedItemsSecondCard -= 1;
+    let allTotal = totalItemsSum -= 1;
+    let allPrice = Math.floor(totalPriceSum -= items[1].price);
+
+    secondCardPrice.forEach((item) => item.innerHTML = price);
+    secondCardOldPrice.forEach((item) => item.innerHTML = oldPrice);
+    secondCardSelectedProducts.forEach((item) => item.innerHTML = selectedItems);
+    totalItem.forEach((item) => item.innerHTML = allTotal);
+    totalPrice.forEach((item) => item.innerHTML = allPrice);
 }
 
+
+// Счетчик 3 карточки
+let thirdCardCounterUnactiveMinus = document.querySelectorAll('#card-3-counter-unactive-minus');
+let thirdCardCounterActiveMinus = document.querySelectorAll('#card-3-counter-active-minus');
+let thirdCardCounterUnactivePlus = document.querySelectorAll('#card-3-counter-unactive-plus');
+let thirdCardCounterActivePlus = document.querySelectorAll('#card-3-counter-active-plus');
+
+let allPriceThirdCard = multiplication(items[2].price, items[2].selected_products);
+let allOldPriceThirdCard = multiplication(items[2].old_price, items[2].selected_products);
+let allSelectedItemsThirdCard = items[2].selected_products;
+let allTotalItemsThirdCard = substraction(items[2].total, items[2].selected_products);
+
+thirdCardCounterActivePlus.forEach((item) => item.addEventListener('click', addOneItemFromCard3));
+thirdCardCounterActiveMinus.forEach((item) => item.addEventListener('click', removeOneItemFromCard3));
+
+
+function addOneItemFromCard3() {
+    let price = allPriceThirdCard += items[2].price;
+    let oldPrice = allOldPriceThirdCard += items[2].old_price;
+    let selectedItems = allSelectedItemsThirdCard += 1;
+    let total = allTotalItemsThirdCard -= 1;
+    let allTotal = totalItemsSum += 1;
+    let allPrice = Math.floor(totalPriceSum += items[2].price);
+
+    thirdCardPrice.forEach((item) => item.innerHTML = price);
+    thirdCardOldPrice.forEach((item) => item.innerHTML = oldPrice);
+    thirdCardSelectedProducts.forEach((item) => item.innerHTML = selectedItems);
+    thirdCardTotalItems.forEach((item) => item.innerHTML = total);
+    totalItem.forEach((item) => item.innerHTML = allTotal);
+    totalPrice.forEach((item) => item.innerHTML = allPrice);
+
+    if (total === 0) {
+        thirdCardCounterActivePlus.forEach((item) => item.classList.add('hidden'));
+        thirdCardCounterUnactivePlus.forEach((item) => item.classList.remove('hidden'));
+        thirdCardCounterUnactiveMinus.forEach((item) => item.classList.add('hidden'));
+        thirdCardCounterActiveMinus.forEach((item) => item.classList.remove('hidden'));
+    } else if (total > 0) {
+        thirdCardCounterUnactiveMinus.forEach((item) => item.classList.add('hidden'));
+        thirdCardCounterActiveMinus.forEach((item) => item.classList.remove('hidden'));
+    } else {
+        return
+    }
+}
+
+function removeOneItemFromCard3() {
+    let price = allPriceThirdCard -= items[2].price;
+    let oldPrice = allOldPriceThirdCard -= items[2].old_price;
+    let selectedItems = allSelectedItemsThirdCard -= 1;
+    let total = allTotalItemsThirdCard += 1;
+    let allTotal = totalItemsSum -= 1;
+    let allPrice = Math.floor(totalPriceSum -= items[2].price);
+
+    thirdCardPrice.forEach((item) => item.innerHTML = price);
+    thirdCardOldPrice.forEach((item) => item.innerHTML = oldPrice);
+    thirdCardSelectedProducts.forEach((item) => item.innerHTML = selectedItems);
+    thirdCardTotalItems.forEach((item) => item.innerHTML = total);
+    totalItem.forEach((item) => item.innerHTML = allTotal);
+    totalPrice.forEach((item) => item.innerHTML = allPrice);
+
+    if (total !== 0) {
+        thirdCardCounterActivePlus.forEach((item) => item.classList.remove('hidden'));
+        thirdCardCounterUnactivePlus.forEach((item) => item.classList.add('hidden'));
+    }
+    
+    if (selectedItems === 1) {
+        thirdCardCounterUnactiveMinus.forEach((item) => item.classList.remove('hidden'));
+        thirdCardCounterActiveMinus.forEach((item) => item.classList.add('hidden'));
+    }
+}
 
 // Чекбоксы карточек
 const allSelectCheckbox = document.getElementById('all-items-checkbox');
@@ -284,6 +367,9 @@ const checkboxItem2 = document.querySelectorAll('#item2-checkbox');
 const fakeCheckboxItem2 = document.querySelectorAll('#item2-checkbox-fake');
 const checkboxItem3 = document.querySelectorAll('#item3-checkbox');
 const fakeCheckboxItem3 = document.querySelectorAll('#item3-checkbox-fake');
+
+const deliveryDateContainer1 = document.getElementById('devivery-first-date');
+const deliveryDateContainer2 = document.getElementById('devivery-second-date');
 
 let isAllChecked = true;
 let isItem1Checked = true;
@@ -316,12 +402,13 @@ function checkedAllActiveItems() {
         multiplication(items[1].price, items[1].selected_products),
         multiplication(items[2].price, items[2].selected_products),    
     );
-    totalPrice.innerHTML = totalPriceSum;
-    totalItem.innerHTML = totalItemsSum;
-    totalItem2.innerHTML = totalItemsSum;
-    totalPrice2.innerHTML = totalPriceSum;
+    totalPrice.forEach((item) => item.innerHTML = totalPriceSum);
+    totalItem.forEach((item) => item.innerHTML = totalItemsSum);
     sumWithoutDiscount.innerHTML = totalWithoutDiscountSum;
     totalDiscount.innerHTML = totalDiscountSum;
+
+    deliveryDateContainer1.style.display = 'flex';
+    deliveryDateContainer2.style.display = 'flex';
 
     // Закрываем чекбокс "Списать оплату сразу"
     getUncheckPayment();
@@ -341,13 +428,14 @@ function unCheckedActiveItems() {
     checkboxItem2.forEach((item) => item.classList.add('hidden'));
     checkboxItem3.forEach((item) => item.classList.add('hidden'));
     fakeCheckboxItem3.forEach((item) => item.classList.remove('hidden'));
-    totalPrice.innerHTML = 0;
-    totalItem.innerHTML = 0;
-    totalItem2.innerHTML = 0;
-    totalPrice2.innerHTML = 0;
+    totalPrice.forEach((item) => item.innerHTML = 0);
+    totalItem.forEach((item) => item.innerHTML = 0);
     sumWithoutDiscount.innerHTML = 0;
     totalDiscount.innerHTML = 0;
     totalPriceSum = 0;
+
+    deliveryDateContainer1.style.display = 'none';
+    deliveryDateContainer2.style.display = 'none';
 
     // Закрываем чекбокс "Списать оплату сразу"
     getUncheckPayment();
@@ -362,16 +450,15 @@ function unCheckFirstItem() {
 
     checkboxItem1.forEach((item) => item.classList.add('hidden'));
     fakeCheckboxItem1.forEach((item) => item.classList.remove('hidden'));
+    firstCardDeliveryImg.classList.add('hidden');
 
     totalItemsSum = items[1].selected_products + items[2].selected_products;
     totalPriceSum = multiplication(items[1].price, items[1].selected_products) + multiplication(items[2].price, items[2].selected_products);
     totalWithoutDiscountSum = multiplication(items[1].old_price, items[1].selected_products) + multiplication(items[2].old_price, items[2].selected_products);
     totalDiscountSum = substraction(totalWithoutDiscountSum, totalPriceSum);
 
-    totalPrice.innerHTML = totalPriceSum;
-    totalItem.innerHTML = totalItemsSum;
-    totalItem2.innerHTML = totalItemsSum;
-    totalPrice2.innerHTML = totalPriceSum;
+    totalPrice.forEach((item) => item.innerHTML = totalPriceSum);
+    totalItem.forEach((item) => item.innerHTML = totalItemsSum);
     sumWithoutDiscount.innerHTML = totalWithoutDiscountSum;
     totalDiscount.innerHTML = totalDiscountSum;
     checked();
@@ -382,24 +469,43 @@ function checkFirstItem() {
     isItem1Checked = true;
     fakeCheckboxItem1.forEach((item) => item.classList.add('hidden'));
     checkboxItem1.forEach((item) => item.classList.remove('hidden'));
+    firstCardDeliveryImg.classList.remove('hidden');
+    deliveryDateContainer1.style.display = 'flex';
 
-    let totalPriceSum = sum(
-        multiplication(items[0].price, items[0].selected_products), 
-        multiplication(items[1].price, items[1].selected_products),
-        multiplication(items[2].price, items[2].selected_products),    
-    );
-    let totalWithoutDiscountSum = sum(
-        multiplication(items[0].old_price, items[0].selected_products), 
-        multiplication(items[1].old_price, items[1].selected_products),
-        multiplication(items[2].old_price, items[2].selected_products),    
-    );
-    let totalItemsSum = sum(items[0].selected_products, items[1].selected_products, items[2].selected_products);
-    let totalDiscountSum = substraction(totalWithoutDiscountSum, totalPriceSum);
+    if (isItem2Checked && isItem3Checked) {
+        totalPriceSum = sum(
+            multiplication(items[0].price, items[0].selected_products), 
+            multiplication(items[1].price, items[1].selected_products),
+            multiplication(items[2].price, items[2].selected_products),    
+        );
+        totalWithoutDiscountSum = sum(
+            multiplication(items[0].old_price, items[0].selected_products), 
+            multiplication(items[1].old_price, items[1].selected_products),
+            multiplication(items[2].old_price, items[2].selected_products),
+        );
+        totalItemsSum = sum(items[0].selected_products, items[1].selected_products, items[2].selected_products);
+        totalDiscountSum = substraction(totalWithoutDiscountSum, totalPriceSum);
+    } else if (!isItem2Checked && isItem3Checked) {
+        totalPriceSum = multiplication(items[0].price, items[0].selected_products) + multiplication(items[2].price, items[2].selected_products);
+        totalWithoutDiscountSum = multiplication(items[0].old_price, items[0].selected_products) + multiplication(items[2].old_price, items[2].selected_products);
+        totalItemsSum = items[0].selected_products + items[2].selected_products;
+        totalDiscountSum = substraction(totalWithoutDiscountSum, totalPriceSum);
+    } else if (isItem2Checked && !isItem3Checked) {
+        totalPriceSum = multiplication(items[0].price, items[0].selected_products) + multiplication(items[1].price, items[1].selected_products);
+        totalWithoutDiscountSum = multiplication(items[0].old_price, items[0].selected_products) + multiplication(items[1].old_price, items[1].selected_products);
+        totalItemsSum = items[0].selected_products + items[1].selected_products;
+        totalDiscountSum = substraction(totalWithoutDiscountSum, totalPriceSum);
+    } else if (!isItem2Checked && !isItem3Checked) {
+        totalPriceSum = multiplication(items[0].price, items[0].selected_products);
+        totalWithoutDiscountSum = multiplication(items[0].old_price, items[0].selected_products);
+        totalItemsSum = items[0].selected_products;
+        totalDiscountSum = substraction(totalWithoutDiscountSum, totalPriceSum);
+    } else {
+        return
+    }
 
-    totalPrice.innerHTML = totalPriceSum;
-    totalItem.innerHTML = totalItemsSum;
-    totalItem2.innerHTML = totalItemsSum;
-    totalPrice2.innerHTML = totalPriceSum;
+    totalPrice.forEach((item) => item.innerHTML = totalPriceSum);
+    totalItem.forEach((item) => item.innerHTML = totalItemsSum);
     sumWithoutDiscount.innerHTML = totalWithoutDiscountSum;
     totalDiscount.innerHTML = totalDiscountSum;
     checked();
@@ -413,16 +519,16 @@ function unCheckSecondItem() {
 
     checkboxItem2.forEach((item) => item.classList.add('hidden'));
     fakeCheckboxItem2.forEach((item) => item.classList.remove('hidden'));
+    secondCardDeliveryImg.forEach((img) => img.classList.add('hidden'));
+    deliveryDateContainer2.style.display = 'none';
 
     totalItemsSum = items[0].selected_products + items[2].selected_products;
     totalPriceSum = multiplication(items[0].price, items[0].selected_products) + multiplication(items[2].price, items[2].selected_products);
     totalWithoutDiscountSum = multiplication(items[0].old_price, items[0].selected_products) + multiplication(items[2].old_price, items[2].selected_products);
     totalDiscountSum = substraction(totalWithoutDiscountSum, totalPriceSum);
 
-    totalPrice.innerHTML = totalPriceSum;
-    totalItem.innerHTML = totalItemsSum;
-    totalItem2.innerHTML = totalItemsSum;
-    totalPrice2.innerHTML = totalPriceSum;
+    totalPrice.forEach((item) => item.innerHTML = totalPriceSum);
+    totalItem.forEach((item) => item.innerHTML = totalItemsSum);
     sumWithoutDiscount.innerHTML = totalWithoutDiscountSum;
     totalDiscount.innerHTML = totalDiscountSum;
     checked();
@@ -433,24 +539,44 @@ function checkSecondItem() {
     isItem2Checked = true;
     fakeCheckboxItem2.forEach((item) => item.classList.add('hidden'));
     checkboxItem2.forEach((item) => item.classList.remove('hidden'));
+    secondCardDeliveryImg.forEach((img) => img.classList.remove('hidden'));
+    deliveryDateContainer2.style.display = 'flex';
+    deliveryDateContainer1.style.display = 'flex';
 
-    let totalPriceSum = sum(
-        multiplication(items[0].price, items[0].selected_products), 
-        multiplication(items[1].price, items[1].selected_products),
-        multiplication(items[2].price, items[2].selected_products),    
-    );
-    let totalWithoutDiscountSum = sum(
-        multiplication(items[0].old_price, items[0].selected_products), 
-        multiplication(items[1].old_price, items[1].selected_products),
-        multiplication(items[2].old_price, items[2].selected_products),
-    );
-    let totalItemsSum = sum(items[0].selected_products, items[1].selected_products, items[2].selected_products);
-    let totalDiscountSum = substraction(totalWithoutDiscountSum, totalPriceSum);
+    if (isItem1Checked && isItem3Checked) {
+        totalPriceSum = sum(
+            multiplication(items[0].price, items[0].selected_products), 
+            multiplication(items[1].price, items[1].selected_products),
+            multiplication(items[2].price, items[2].selected_products),    
+        );
+        totalWithoutDiscountSum = sum(
+            multiplication(items[0].old_price, items[0].selected_products), 
+            multiplication(items[1].old_price, items[1].selected_products),
+            multiplication(items[2].old_price, items[2].selected_products),
+        );
+        totalItemsSum = sum(items[0].selected_products, items[1].selected_products, items[2].selected_products);
+        totalDiscountSum = substraction(totalWithoutDiscountSum, totalPriceSum);
+    } else if (!isItem1Checked && isItem3Checked) {
+        totalPriceSum = multiplication(items[1].price, items[1].selected_products) + multiplication(items[2].price, items[2].selected_products);
+        totalWithoutDiscountSum = multiplication(items[1].old_price, items[1].selected_products) + multiplication(items[2].old_price, items[2].selected_products);
+        totalItemsSum = items[1].selected_products + items[2].selected_products;
+        totalDiscountSum = substraction(totalWithoutDiscountSum, totalPriceSum);
+    } else if (isItem1Checked && !isItem3Checked) {
+        totalPriceSum = multiplication(items[0].price, items[0].selected_products) + multiplication(items[1].price, items[1].selected_products);
+        totalWithoutDiscountSum = multiplication(items[0].old_price, items[0].selected_products) + multiplication(items[1].old_price, items[1].selected_products);
+        totalItemsSum = items[0].selected_products + items[1].selected_products;
+        totalDiscountSum = substraction(totalWithoutDiscountSum, totalPriceSum);
+    } else if (!isItem1Checked && !isItem3Checked) {
+        totalPriceSum = multiplication(items[1].price, items[1].selected_products);
+        totalWithoutDiscountSum = multiplication(items[1].old_price, items[1].selected_products);
+        totalItemsSum = items[1].selected_products;
+        totalDiscountSum = substraction(totalWithoutDiscountSum, totalPriceSum);
+    } else {
+        return
+    }
 
-    totalPrice.innerHTML = totalPriceSum;
-    totalItem.innerHTML = totalItemsSum;
-    totalItem2.innerHTML = totalItemsSum;
-    totalPrice2.innerHTML = totalPriceSum;
+    totalPrice.forEach((item) => item.innerHTML = totalPriceSum);
+    totalItem.forEach((item) => item.innerHTML = totalItemsSum);
     sumWithoutDiscount.innerHTML = totalWithoutDiscountSum;
     totalDiscount.innerHTML = totalDiscountSum;
     checked();
@@ -464,16 +590,15 @@ function unChechThirdItem() {
 
     checkboxItem3.forEach((item) => item.classList.add('hidden'));
     fakeCheckboxItem3.forEach((item) => item.classList.remove('hidden'));
+    thirdCardDeliveryImg.classList.add('hidden');
 
     totalItemsSum = items[0].selected_products + items[1].selected_products;
     totalPriceSum = multiplication(items[0].price, items[0].selected_products) + multiplication(items[1].price, items[1].selected_products);
     totalWithoutDiscountSum = multiplication(items[0].old_price, items[0].selected_products) + multiplication(items[1].old_price, items[1].selected_products);
     totalDiscountSum = substraction(totalWithoutDiscountSum, totalPriceSum);
 
-    totalPrice.innerHTML = totalPriceSum;
-    totalItem.innerHTML = totalItemsSum;
-    totalItem2.innerHTML = totalItemsSum;
-    totalPrice2.innerHTML = totalPriceSum;
+    totalPrice.forEach((item) => item.innerHTML = totalPriceSum);
+    totalItem.forEach((item) => item.innerHTML = totalItemsSum);
     sumWithoutDiscount.innerHTML = totalWithoutDiscountSum;
     totalDiscount.innerHTML = totalDiscountSum;
     checked();
@@ -484,6 +609,8 @@ function checkThirdItem() {
     isItem3Checked = true;
     checkboxItem3.forEach((item) => item.classList.remove('hidden'));
     fakeCheckboxItem3.forEach((item) => item.classList.add('hidden'));
+    thirdCardDeliveryImg.classList.remove('hidden');
+    deliveryDateContainer1.style.display = 'flex';
 
     let totalPriceSum = sum(
         multiplication(items[0].price, items[0].selected_products), 
@@ -498,10 +625,8 @@ function checkThirdItem() {
     let totalItemsSum = sum(items[0].selected_products, items[1].selected_products, items[2].selected_products);
     let totalDiscountSum = substraction(totalWithoutDiscountSum, totalPriceSum);
 
-    totalPrice.innerHTML = totalPriceSum;
-    totalItem.innerHTML = totalItemsSum;
-    totalItem2.innerHTML = totalItemsSum;
-    totalPrice2.innerHTML = totalPriceSum;
+    totalPrice.forEach((item) => item.innerHTML = totalPriceSum);
+    totalItem.forEach((item) => item.innerHTML = totalItemsSum);
     sumWithoutDiscount.innerHTML = totalWithoutDiscountSum;
     totalDiscount.innerHTML = totalDiscountSum;
 
@@ -516,10 +641,10 @@ function checked() {
     } else if (!isItem1Checked && !isItem2Checked && !isItem3Checked) {
         fakeAllSelectCheckbox.classList.remove('hidden');
         allSelectCheckbox.classList.add('hidden');
-        totalPrice.innerHTML = 0;
-        totalItem.innerHTML = 0;
-        totalItem2.innerHTML = 0;
-        totalPrice2.innerHTML = 0;
+        deliveryDateContainer1.style.display = 'none';
+        deliveryDateContainer2.style.display = 'none';
+        totalPrice.forEach((item) => item.innerHTML = 0);
+        totalItem.forEach((item) => item.innerHTML = 0);
         sumWithoutDiscount.innerHTML = 0;
         totalDiscount.innerHTML = 0;
         totalPriceSum = 0;
@@ -704,7 +829,7 @@ function vilidatePhone() {
     let errorPhone = document.getElementById('error-user-phone');
     let errorPhoneText = document.getElementById('error-phone-text');
     let referalPhone = new RegExp(/^[\d\+][\d\(\)\ -]{4,14}\d$/);
-    const MAX_TEL_NUM = 16
+    const MAX_TEL_NUM = 12;
 
     if (!phone.value.trim()) {
         phone.classList.remove('recipient-input');
