@@ -297,9 +297,8 @@ body {
 
 .total-active-basket-items-container {
     display: flex;
-    font-family: 'Segoe UI';
-    font-weight: 600;
     font-size: 16px;
+    font-weight: 600;
     line-height: 24px;
 }
 
@@ -893,7 +892,6 @@ body {
 .mobile-unactive-item-params-name {
     max-height: 44px;
     overflow: hidden;
-    text-overflow: ellipsis;
     margin-bottom: 8px;
 }
 
